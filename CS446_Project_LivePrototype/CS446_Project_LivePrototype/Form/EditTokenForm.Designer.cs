@@ -74,10 +74,10 @@
             this.playerType_rad.AutoSize = true;
             this.playerType_rad.Location = new System.Drawing.Point(6, 42);
             this.playerType_rad.Name = "playerType_rad";
-            this.playerType_rad.Size = new System.Drawing.Size(53, 17);
+            this.playerType_rad.Size = new System.Drawing.Size(54, 17);
             this.playerType_rad.TabIndex = 0;
             this.playerType_rad.TabStop = true;
-            this.playerType_rad.Text = "player";
+            this.playerType_rad.Text = "Player";
             this.playerType_rad.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -97,10 +97,10 @@
             this.enemyType_rad.AutoSize = true;
             this.enemyType_rad.Location = new System.Drawing.Point(97, 42);
             this.enemyType_rad.Name = "enemyType_rad";
-            this.enemyType_rad.Size = new System.Drawing.Size(56, 17);
+            this.enemyType_rad.Size = new System.Drawing.Size(57, 17);
             this.enemyType_rad.TabIndex = 4;
             this.enemyType_rad.TabStop = true;
-            this.enemyType_rad.Text = "enemy";
+            this.enemyType_rad.Text = "Enemy";
             this.enemyType_rad.UseVisualStyleBackColor = true;
             // 
             // NPCtype_rad
@@ -108,10 +108,10 @@
             this.NPCtype_rad.AutoSize = true;
             this.NPCtype_rad.Location = new System.Drawing.Point(188, 42);
             this.NPCtype_rad.Name = "NPCtype_rad";
-            this.NPCtype_rad.Size = new System.Drawing.Size(77, 17);
+            this.NPCtype_rad.Size = new System.Drawing.Size(76, 17);
             this.NPCtype_rad.TabIndex = 2;
             this.NPCtype_rad.TabStop = true;
-            this.NPCtype_rad.Text = "Non Player";
+            this.NPCtype_rad.Text = "Non-player";
             this.NPCtype_rad.UseVisualStyleBackColor = true;
             // 
             // charPic
@@ -366,9 +366,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(12, 339);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.Size = new System.Drawing.Size(84, 13);
             this.label10.TabIndex = 7;
-            this.label10.Text = "CharacterNotes";
+            this.label10.Text = "Character Notes";
             // 
             // saveButton
             // 

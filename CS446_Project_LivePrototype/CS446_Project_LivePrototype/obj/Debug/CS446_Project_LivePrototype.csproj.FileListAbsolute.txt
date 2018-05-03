@@ -56,3 +56,15 @@ E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\bin\Debug\CS446_Project_LivePrototype.exe
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\bin\Debug\CS446_Project_LivePrototype.pdb
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.EditTokenForm.resources
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\bin\Debug\CS446_Project_LivePrototype.exe.config
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\bin\Debug\CS446_Project_LivePrototype.exe
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\bin\Debug\CS446_Project_LivePrototype.pdb
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.csprojResolveAssemblyReference.cache
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.EditTokenForm.resources
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.MainForm.resources
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.MapControl.resources
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.Properties.Resources.resources
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.csproj.GenerateResource.cache
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.csproj.CoreCompileInputs.cache
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.exe
+C:\Users\JesseT420\Documents\Visual Studio 2017\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.pdb
