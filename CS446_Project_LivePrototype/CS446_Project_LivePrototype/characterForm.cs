@@ -60,6 +60,8 @@ namespace CS446_Project_LivePrototype
         private void saveButton_Click(object sender, EventArgs e)
         {
             //when token objects have been made change this method
+            this.DialogResult = DialogResult.OK;
+
             this.Close();
         }
 
