@@ -1,6 +1,6 @@
 ﻿namespace CS446_Project_LivePrototype
 {
-    partial class characterForm
+    partial class EditTokenForm
     {
         /// <summary>
         /// Required designer variable.
@@ -122,7 +122,6 @@
             this.charPic.Size = new System.Drawing.Size(145, 145);
             this.charPic.TabIndex = 2;
             this.charPic.TabStop = false;
-            this.charPic.Click += new System.EventHandler(this.charPic_Click);
             // 
             // textBox1
             // 
@@ -130,7 +129,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(255, 20);
             this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -215,7 +213,6 @@
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Charisma";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -265,7 +262,6 @@
             0,
             0,
             0});
-            this.Intelligence.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             // 
             // Constitution
             // 
@@ -279,7 +275,6 @@
             0,
             0,
             0});
-            this.Constitution.ValueChanged += new System.EventHandler(this.Constitution_ValueChanged);
             // 
             // Dexterity
             // 
@@ -339,7 +334,6 @@
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Health Points";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // HP
             // 
@@ -358,7 +352,6 @@
             0,
             0,
             0});
-            this.HP.ValueChanged += new System.EventHandler(this.HP_ValueChanged);
             // 
             // charNotes
             // 
@@ -397,7 +390,7 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // characterForm
+            // EditTokenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -413,9 +406,8 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
-            this.Name = "characterForm";
-            this.Text = "Character Form";
-            this.Load += new System.EventHandler(this.characterForm_Load);
+            this.Name = "EditTokenForm";
+            this.Text = "Edit Token";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.charPic)).EndInit();
