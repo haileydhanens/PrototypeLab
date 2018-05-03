@@ -45,34 +45,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="characterForm.cs">
+    <Compile Include="Data\MapToken.cs" />
+    <Compile Include="Form\EditTokenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="characterForm.Designer.cs">
-      <DependentUpon>characterForm.cs</DependentUpon>
+    <Compile Include="Form\EditTokenForm.Designer.cs">
+      <DependentUpon>EditTokenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameState.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Data\GameState.cs" />
+    <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MapControl.cs">
+    <Compile Include="Form\MapControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MapControl.Designer.cs">
+    <Compile Include="Form\MapControl.Designer.cs">
       <DependentUpon>MapControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="characterForm.resx">
-      <DependentUpon>characterForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form\EditTokenForm.resx">
+      <DependentUpon>EditTokenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MapControl.resx">
+    <EmbeddedResource Include="Form\MapControl.resx">
       <DependentUpon>MapControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
