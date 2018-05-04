@@ -135,7 +135,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelTabControl);
             this.mainSplitContainer.Panel2MinSize = 0;
             this.mainSplitContainer.Size = new System.Drawing.Size(800, 426);
-            this.mainSplitContainer.SplitterDistance = 526;
+            this.mainSplitContainer.SplitterDistance = 522;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -151,7 +151,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(266, 424);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(270, 424);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -159,7 +159,7 @@
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
             this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(258, 398);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(262, 398);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
             this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(256, 398);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(262, 398);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
             this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mapTabPage.Size = new System.Drawing.Size(258, 398);
+            this.mapTabPage.Size = new System.Drawing.Size(262, 398);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -226,7 +226,7 @@
             this.gridVertOffsetSlider.Maximum = 5;
             this.gridVertOffsetSlider.Minimum = -5;
             this.gridVertOffsetSlider.Name = "gridVertOffsetSlider";
-            this.gridVertOffsetSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridVertOffsetSlider.Size = new System.Drawing.Size(249, 20);
             this.gridVertOffsetSlider.TabIndex = 15;
             this.gridVertOffsetSlider.Scroll += new System.EventHandler(this.gridVertOffsetSlider_Scroll);
             // 
@@ -248,7 +248,7 @@
             this.gridHorzOffset.Maximum = 5;
             this.gridHorzOffset.Minimum = -5;
             this.gridHorzOffset.Name = "gridHorzOffset";
-            this.gridHorzOffset.Size = new System.Drawing.Size(245, 30);
+            this.gridHorzOffset.Size = new System.Drawing.Size(249, 30);
             this.gridHorzOffset.TabIndex = 13;
             this.gridHorzOffset.Scroll += new System.EventHandler(this.gridHorzOffset_Scroll);
             // 
@@ -270,7 +270,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(249, 20);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -292,7 +292,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(6, 332);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(249, 20);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Value = 255;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
@@ -314,7 +314,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(6, 371);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridScaleSlider.Size = new System.Drawing.Size(249, 20);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -364,6 +364,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
             this.Text = "D&D Prototype";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.mainSplitContainer.Panel2.ResumeLayout(false);

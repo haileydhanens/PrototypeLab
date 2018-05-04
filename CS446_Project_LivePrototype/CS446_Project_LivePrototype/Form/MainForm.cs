@@ -16,12 +16,15 @@ namespace CS446_Project_LivePrototype
     {
         private MapControl mapControl;
         private GameState gameState;
-        private int savedSplitterPos = 250;
+        private int savedSplitterPos;
 
         public MainForm()
         {
             InitializeComponent();
+        }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             gameState = new GameState();
 
             mapControl = new MapControl(gameState);
@@ -37,6 +40,8 @@ namespace CS446_Project_LivePrototype
             gridScaleSlider.Maximum = MapControl.MAX_GRID_SCALE_FACTOR;
             gridScaleSlider.Value = gridScaleSlider.Minimum;
             mapControl.GridScale = gridScaleSlider.Value;
+
+            savedSplitterPos = mainSplitContainer.SplitterDistance;
         }
 
         private void mainSplitContainer_DoubleClick(object sender, EventArgs e)
