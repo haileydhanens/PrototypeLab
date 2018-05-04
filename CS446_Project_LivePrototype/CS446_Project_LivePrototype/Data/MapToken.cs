@@ -170,11 +170,17 @@ namespace CS446_Project_LivePrototype
                     newPos.Y = Math.Min(Math.Max(0, newPos.Y), worldRect.Height);
                 }
 
+                if (mapCtrl.TokenSnapToGrid)
+                {
+                    newPos.X = (float)Math.Floor(newPos.X) + 0.5f + mapCtrl.GridHorizontalOffset;
+                    newPos.Y = (float)Math.Floor(newPos.Y) + 0.5f + mapCtrl.GridVerticalOffset;
+                }
+
                 if (!position.Equals(newPos))
                 {
                     mapCtrl.RedrawNeeded = true;
                     this.position = newPos;
-                }
+                }      
             }
         }
 

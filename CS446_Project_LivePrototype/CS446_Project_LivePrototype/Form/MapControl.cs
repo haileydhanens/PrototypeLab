@@ -37,6 +37,7 @@ namespace CS446_Project_LivePrototype
         private Point mouseDownPos;
         private bool mouseDown = false;
         private bool redrawNeeded = false;
+        private bool tokenSnapToGrid = false;
         private Image mapImage = null;
         private Image mapImageSized = null;
         private int gridAlpha = 255;
@@ -220,6 +221,12 @@ namespace CS446_Project_LivePrototype
                 viewPosX = value.X;
                 viewPosY = value.Y;
             }
+        }
+
+        public bool TokenSnapToGrid
+        {
+            get { return tokenSnapToGrid; }
+            set { tokenSnapToGrid = value; }
         }
 
         public bool RedrawNeeded

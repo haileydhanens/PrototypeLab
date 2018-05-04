@@ -42,6 +42,7 @@ namespace CS446_Project_LivePrototype
             mapControl.GridScale = gridScaleSlider.Value;
 
             savedSplitterPos = mainSplitContainer.SplitterDistance;
+            snapTokensToGridCheckbox.CheckState = mapControl.TokenSnapToGrid ? CheckState.Checked : CheckState.Unchecked;
         }
 
         private void mainSplitContainer_DoubleClick(object sender, EventArgs e)
@@ -181,6 +182,11 @@ namespace CS446_Project_LivePrototype
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void snapTokensToGridCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            mapControl.TokenSnapToGrid = (snapTokensToGridCheckbox.CheckState == CheckState.Checked);
         }
     }
 }
