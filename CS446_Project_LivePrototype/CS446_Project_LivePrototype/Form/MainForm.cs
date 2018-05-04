@@ -110,8 +110,10 @@ namespace CS446_Project_LivePrototype
 
             if (result == DialogResult.OK)
             {
+                RectangleF viewPortRect = mapControl.GetViewportUnitRect();
+
                 TokenData newData = new TokenData("Test Token", TokenType.Player);
-                MapToken newToken = new MapToken(mapControl, ref newData, new PointF(0.5f, 0.5f));
+                MapToken newToken = new MapToken(mapControl, ref newData, new PointF(viewPortRect.Width / 2, viewPortRect.Height / 2));
                 gameState.ActiveTokens.Add(newToken);
 
                 mapControl.Refresh();

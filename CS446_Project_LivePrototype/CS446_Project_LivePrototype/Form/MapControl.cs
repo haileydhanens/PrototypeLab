@@ -12,6 +12,12 @@ using System.Windows.Forms;
 
 namespace CS446_Project_LivePrototype
 {
+    public enum MouseDragState
+    {
+        Map,
+        Token
+    }
+
     public partial class MapControl : UserControl
     {
         public static readonly int MAX_GRID_THICKNESS = 6;
@@ -25,8 +31,11 @@ namespace CS446_Project_LivePrototype
 
         private readonly object drawMutex = new object();
         private GameState gameState;
+        private MapToken draggedToken = null;
+        private MouseDragState mouseDragState;
         private Point mouseDownPos;
         private bool mouseDown = false;
+        private bool redrawNeeded = false;
         private Image mapImage = null;
         private Image mapImageSized = null;
         private int gridAlpha = 255;
@@ -212,6 +221,12 @@ namespace CS446_Project_LivePrototype
             }
         }
 
+        public bool RedrawNeeded
+        {
+            get { return redrawNeeded; }
+            set { redrawNeeded = value; }
+        }
+
         // Centers view over the center of the map
         public void CenterViewOnMap()
         {
@@ -360,6 +375,21 @@ namespace CS446_Project_LivePrototype
             return pixelPoint;
         }
 
+        // Takes a pixel viewport position and returns a unit coordinate relative to
+        // the world
+        public PointF PixelPosToUnitPos(Point pixelPos, RectangleF viewPortRect)
+        {
+            PointF unitPoint = new Point();
+
+            float xViewRatio = (float)pixelPos.X / Width;
+            float yViewRatio = (float)pixelPos.Y / Height;
+
+            unitPoint.X = viewPortRect.Left + (xViewRatio * viewPortRect.Width);
+            unitPoint.Y = viewPortRect.Top + (yViewRatio * viewPortRect.Height);
+
+            return unitPoint;
+        }
+
         // Takes a unit rectangle and returns a pixel rectangle relative to the current
         // map control
         public Rectangle UnitRectToPixelRect(RectangleF srcRect, RectangleF? viewPortRect = null)
@@ -454,38 +484,154 @@ namespace CS446_Project_LivePrototype
         {
             mouseDownPos = e.Location;
             mouseDown = true;
+
+            MapToken tokenUnderMouse = getTokenUnderMouse(e.Location);
+
+            if (tokenUnderMouse != null)
+            {
+                tokenUnderMouse.MouseState = TokenMouseState.Drag;
+                this.draggedToken = tokenUnderMouse;
+                this.mouseDragState = MouseDragState.Token;
+            }
+            else
+            {
+                this.mouseDragState = MouseDragState.Map;
+            }
+
+            refreshIfNeeded();
         }
 
-        // Repositions map based off mouse movement
+        // Event that is called every time the mouse is moved over the control
         private void MapControl_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!mouseDown) { return; }
+            Point newMousePos = e.Location;
 
-            Point newPos = e.Location;
+            updateActiveTokenMouseState(newMousePos);
 
-            if (mouseDownPos != newPos)
+            if (mouseDown && !mouseDownPos.Equals(newMousePos))
             {
-                float xOffset = mouseDownPos.X - newPos.X;
-                float yOffset = mouseDownPos.Y - newPos.Y;
+                float xOffset = mouseDownPos.X - newMousePos.X;
+                float yOffset = mouseDownPos.Y - newMousePos.Y;
 
                 RectangleF unitViewport = GetViewportUnitRect();
 
-                float viewOffsetX = (xOffset / Width) * unitViewport.Width;
-                float viewOffsetY = (yOffset / Height) * unitViewport.Height;
+                float unitOffsetX = (xOffset / Width) * unitViewport.Width;
+                float unitOffsetY = (yOffset / Height) * unitViewport.Height;
 
-                viewPosX += viewOffsetX;
-                viewPosY += viewOffsetY;
+                if (mouseDragState == MouseDragState.Token)
+                {
+                    PointF tokenPos = draggedToken.Position;
+                    PointF mouseUnitPos = PixelPosToUnitPos(newMousePos, unitViewport);
 
-                mouseDownPos = newPos;
+                    tokenPos.X -= unitOffsetX;
+                    tokenPos.Y -= unitOffsetY;
 
-                Refresh();
+                    draggedToken.Position = tokenPos;
+
+                    RectangleF tokenUnitRect = draggedToken.GetUnitRect();
+
+                    if (!tokenUnitRect.Contains(mouseUnitPos))
+                    {
+                        draggedToken.Position = mouseUnitPos;
+                    }
+                }
+                else if (mouseDragState == MouseDragState.Map)
+                {
+                    viewPosX += unitOffsetX;
+                    viewPosY += unitOffsetY;
+
+                    redrawNeeded = true;
+                }
+
+                mouseDownPos = newMousePos;
             }
+
+            refreshIfNeeded();
         }
 
         // User let go of the mouse button
         private void MapControl_MouseUp(object sender, MouseEventArgs e)
         {
+            if (draggedToken != null)
+            {
+                draggedToken.MouseState = TokenMouseState.Hover;
+                draggedToken = null;
+            }
+
             mouseDown = false;
+
+            refreshIfNeeded();
+        }
+
+        protected void refreshIfNeeded()
+        {
+            if (redrawNeeded)
+            {
+                Refresh();
+                redrawNeeded = false;
+            }
+        }
+
+        // updates the mouse state of any active tokens on the map
+        // depending on the current mouse position
+        protected void updateActiveTokenMouseState(Point mousePos)
+        {
+            // No active tokens? Return
+            if (gameState.ActiveTokens.Count == 0) { return; }
+
+            // Get unit rectangle for current view
+            RectangleF viewPortRect = GetViewportUnitRect();
+
+            // Loop through each active token
+            foreach (MapToken token in gameState.ActiveTokens)
+            {
+                // Is a token currently being dragged?
+                if (draggedToken != null)
+                {
+                    if (token != draggedToken) { token.MouseState = TokenMouseState.Idle;  }
+                }
+                else
+                {
+                    RectangleF tokenUnitRect = token.GetUnitRect(); // Get unit rectangle for token
+                    Rectangle pixelRect = UnitRectToPixelRect(tokenUnitRect, viewPortRect); // Convert unit rect to pixel coordinates
+
+                    // If token is under mouse, set Hover state
+                    if (pixelRect.Contains(mousePos))
+                    {
+                        token.MouseState = TokenMouseState.Hover;
+                    }
+                    else
+                    {
+                        token.MouseState = TokenMouseState.Idle;
+                    }
+                }
+            }
+
+        }
+
+        protected MapToken getTokenUnderMouse(Point mousePos)
+        {
+            // No active tokens? Return null
+            if (gameState.ActiveTokens.Count == 0) { return null; }
+
+            // Get unit rectangle for current view
+            RectangleF viewPortRect = GetViewportUnitRect();
+
+            // Loop through each active token
+            foreach (MapToken token in gameState.ActiveTokens)
+            {
+                RectangleF tokenUnitRect = token.GetUnitRect(); // Get unit rectangle for token
+                Rectangle pixelRect = UnitRectToPixelRect(tokenUnitRect, viewPortRect); // Convert unit rect to pixel coordinates
+
+                // If token is under mouse, return it
+                if (pixelRect.Contains(mousePos))
+                {
+                    return token;
+                }
+            }
+
+            // No token under mouse, return null
+            return null;
         }
 
         // This resizes the map image to be the same resolution as the current zoom

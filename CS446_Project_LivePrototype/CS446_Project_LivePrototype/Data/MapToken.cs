@@ -108,10 +108,22 @@ namespace CS446_Project_LivePrototype
 
     // ========================================================
 
+    public enum TokenMouseState
+    {
+        Idle,
+        Hover,
+        Drag
+    }
+
     public class MapToken
     {
+        public static readonly Color COLOR_IDLE = Color.Red;
+        public static readonly Color COLOR_HOVER = Color.Yellow;
+        public static readonly Color COLOR_DRAG = Color.Green;
+
         protected MapControl mapCtrl;
         protected TokenData tokenData;
+        protected TokenMouseState mouseState = TokenMouseState.Idle;
         protected PointF position;
         protected float scale = 1.0f;
 
@@ -125,7 +137,11 @@ namespace CS446_Project_LivePrototype
         // Copy constructor
         public MapToken(MapToken other)
         {
+            TokenData otherTokenData = other.GetTokenData();
 
+            this.mapCtrl = other.mapCtrl;
+            this.tokenData = new TokenData(ref otherTokenData);
+            this.position = other.Position;
         }
 
         public TokenData GetTokenData()
@@ -150,11 +166,15 @@ namespace CS446_Project_LivePrototype
                 if (mapCtrl.HasBackground && !worldRect.Contains(newPos))
                 {
                     // Move token back onto map
-                    newPos.X = Math.Max(Math.Min(0, newPos.X), worldRect.Width);
-                    newPos.Y = Math.Max(Math.Min(0, newPos.Y), worldRect.Height);
+                    newPos.X = Math.Min(Math.Max(0, newPos.X), worldRect.Width);
+                    newPos.Y = Math.Min(Math.Max(0, newPos.Y), worldRect.Height);
                 }
 
-                this.position = newPos;
+                if (!position.Equals(newPos))
+                {
+                    mapCtrl.RedrawNeeded = true;
+                    this.position = newPos;
+                }
             }
         }
 
@@ -167,8 +187,26 @@ namespace CS446_Project_LivePrototype
             if (!viewportRect.IntersectsWith(tokenRect)) { return; }
 
             Rectangle pixelRect = mapCtrl.UnitRectToPixelRect(tokenRect, viewportRect);
-            SolidBrush brush = new SolidBrush(Color.Crimson);
 
+            Color drawColor = Color.White;
+
+            switch (mouseState)
+            {
+                case TokenMouseState.Idle:
+                    drawColor = COLOR_IDLE;
+                    break;
+                case TokenMouseState.Hover:
+                    drawColor = COLOR_HOVER;
+                    break;
+                case TokenMouseState.Drag:
+                    drawColor = COLOR_DRAG;
+                    break;
+            }
+
+            SolidBrush brush = new SolidBrush(drawColor);
+
+            // Placeholder graphics.
+            // TODO: Draw token image
             graphics.FillEllipse(brush, pixelRect);
         }
 
@@ -183,6 +221,19 @@ namespace CS446_Project_LivePrototype
             unitRect.Y = position.Y - (unitRect.Height / 2); // Center Rect over Y pos
 
             return unitRect;
+        }
+
+        public TokenMouseState MouseState
+        {
+            get { return mouseState; }
+            set
+            {
+                if (mouseState != value)
+                {
+                    mapCtrl.RedrawNeeded = true;
+                    mouseState = value;
+                }
+            }
         }
     }
 }
