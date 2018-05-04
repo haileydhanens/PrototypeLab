@@ -117,5 +117,64 @@ namespace CS446_Project_LivePrototype
                 mapControl.Refresh();
             }
         }
+
+		private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label6_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			int numDice = (int)numericUpDown1.Value;
+			int numSides = (int)numericUpDown2.Value;
+			String output = "";
+
+			Random rnd = new Random();
+
+            for (int i = numDice; i > 0; i--)
+                output += "  " + rnd.Next(1, numSides);
+
+            output.Trim();
+
+			Console.WriteLine(output);
+			textBox1.Text = output;
+		}
+
+        
+		private void mainSplitContainer_Panel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void label7_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void mainSplitContainer_Panel2_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+		{
+
+		}
+
+		private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

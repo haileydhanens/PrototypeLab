@@ -36,6 +36,8 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.rightPanelTabControl = new System.Windows.Forms.TabControl();
             this.activeTokensTabPage = new System.Windows.Forms.TabPage();
             this.tokenLibraryTabPage = new System.Windows.Forms.TabPage();
@@ -54,11 +56,22 @@
             this.zoomOutBtn = new System.Windows.Forms.Button();
             this.zoomInBtn = new System.Windows.Forms.Button();
             this.testLoadMapBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.openMapImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
+            this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.rightPanelTabControl.SuspendLayout();
             this.tokenLibraryTabPage.SuspendLayout();
             this.mapTabPage.SuspendLayout();
@@ -67,15 +80,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridThicknessSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridAlphaSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridScaleSlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
             // 
+            this.mainMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(800, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(784, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -130,17 +146,60 @@
             this.mainSplitContainer.Location = new System.Drawing.Point(0, 24);
             this.mainSplitContainer.Name = "mainSplitContainer";
             // 
+            // mainSplitContainer.Panel1
+            // 
+            this.mainSplitContainer.Panel1.Controls.Add(this.splitter1);
+            this.mainSplitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.mainSplitContainer_Panel1_Paint);
+            // 
             // mainSplitContainer.Panel2
             // 
-            this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelTabControl);
+            this.mainSplitContainer.Panel2.Controls.Add(this.splitContainer1);
+            this.mainSplitContainer.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.mainSplitContainer_Panel2_Paint);
             this.mainSplitContainer.Panel2MinSize = 0;
-            this.mainSplitContainer.Size = new System.Drawing.Size(800, 426);
-            this.mainSplitContainer.SplitterDistance = 526;
+            this.mainSplitContainer.Size = new System.Drawing.Size(784, 537);
+            this.mainSplitContainer.SplitterDistance = 549;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
             this.mainSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.mainSplitContainer_SplitterMoved);
             this.mainSplitContainer.DoubleClick += new System.EventHandler(this.mainSplitContainer_DoubleClick);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(2, 535);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.rightPanelTabControl);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.label6);
+            this.splitContainer1.Panel2.Controls.Add(this.label7);
+            this.splitContainer1.Panel2.Controls.Add(this.numericUpDown2);
+            this.splitContainer1.Panel2.Controls.Add(this.numericUpDown1);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Size = new System.Drawing.Size(227, 535);
+            this.splitContainer1.SplitterDistance = 447;
+            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.TabIndex = 1;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // rightPanelTabControl
             // 
@@ -151,15 +210,15 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(266, 424);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(227, 447);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
             // 
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
-            this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(258, 398);
+            this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(278, 404);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -169,8 +228,8 @@
             this.tokenLibraryTabPage.Controls.Add(this.newTokenBtn);
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
-            this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(256, 398);
+            this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(278, 404);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -202,8 +261,8 @@
             this.mapTabPage.Controls.Add(this.testLoadMapBtn);
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
-            this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mapTabPage.Size = new System.Drawing.Size(258, 398);
+            this.mapTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.mapTabPage.Size = new System.Drawing.Size(219, 421);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -211,7 +270,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 238);
+            this.label5.Location = new System.Drawing.Point(6, 188);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 16;
@@ -222,18 +281,18 @@
             this.gridVertOffsetSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridVertOffsetSlider.AutoSize = false;
-            this.gridVertOffsetSlider.Location = new System.Drawing.Point(3, 254);
+            this.gridVertOffsetSlider.Location = new System.Drawing.Point(6, 205);
             this.gridVertOffsetSlider.Maximum = 5;
             this.gridVertOffsetSlider.Minimum = -5;
             this.gridVertOffsetSlider.Name = "gridVertOffsetSlider";
-            this.gridVertOffsetSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridVertOffsetSlider.Size = new System.Drawing.Size(206, 29);
             this.gridVertOffsetSlider.TabIndex = 15;
             this.gridVertOffsetSlider.Scroll += new System.EventHandler(this.gridVertOffsetSlider_Scroll);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 188);
+            this.label4.Location = new System.Drawing.Point(6, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 13);
             this.label4.TabIndex = 14;
@@ -244,18 +303,18 @@
             this.gridHorzOffset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridHorzOffset.AutoSize = false;
-            this.gridHorzOffset.Location = new System.Drawing.Point(3, 205);
+            this.gridHorzOffset.Location = new System.Drawing.Point(6, 149);
             this.gridHorzOffset.Maximum = 5;
             this.gridHorzOffset.Minimum = -5;
             this.gridHorzOffset.Name = "gridHorzOffset";
-            this.gridHorzOffset.Size = new System.Drawing.Size(245, 30);
+            this.gridHorzOffset.Size = new System.Drawing.Size(206, 30);
             this.gridHorzOffset.TabIndex = 13;
             this.gridHorzOffset.Scroll += new System.EventHandler(this.gridHorzOffset_Scroll);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 277);
+            this.label3.Location = new System.Drawing.Point(6, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 12;
@@ -266,11 +325,11 @@
             this.gridThicknessSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridThicknessSlider.AutoSize = false;
-            this.gridThicknessSlider.Location = new System.Drawing.Point(6, 293);
+            this.gridThicknessSlider.Location = new System.Drawing.Point(6, 257);
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(206, 27);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -278,7 +337,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 316);
+            this.label2.Location = new System.Drawing.Point(6, 287);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 10;
@@ -289,10 +348,10 @@
             this.gridAlphaSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridAlphaSlider.AutoSize = false;
-            this.gridAlphaSlider.Location = new System.Drawing.Point(6, 332);
+            this.gridAlphaSlider.Location = new System.Drawing.Point(6, 305);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(206, 32);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Value = 255;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
@@ -300,21 +359,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 355);
+            this.label1.Location = new System.Drawing.Point(6, 342);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Grid Scale";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // gridScaleSlider
             // 
             this.gridScaleSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridScaleSlider.AutoSize = false;
-            this.gridScaleSlider.Location = new System.Drawing.Point(6, 371);
+            this.gridScaleSlider.Location = new System.Drawing.Point(6, 358);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(245, 20);
+            this.gridScaleSlider.Size = new System.Drawing.Size(206, 29);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -331,7 +391,7 @@
             // 
             // zoomInBtn
             // 
-            this.zoomInBtn.Location = new System.Drawing.Point(9, 60);
+            this.zoomInBtn.Location = new System.Drawing.Point(5, 60);
             this.zoomInBtn.Name = "zoomInBtn";
             this.zoomInBtn.Size = new System.Drawing.Size(75, 23);
             this.zoomInBtn.TabIndex = 1;
@@ -349,6 +409,84 @@
             this.testLoadMapBtn.UseVisualStyleBackColor = true;
             this.testLoadMapBtn.Click += new System.EventHandler(this.testLoadMapBtn_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 9);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(212, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(172, 38);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(43, 39);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Roll";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 38);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Number of Dice";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 59);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Number of Sides";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(117, 58);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown2.TabIndex = 1;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(117, 36);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // openMapImageDialog
             // 
             this.openMapImageDialog.Filter = "Image|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
@@ -358,17 +496,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "D&D Prototype";
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            this.mainSplitContainer.Panel1.ResumeLayout(false);
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.rightPanelTabControl.ResumeLayout(false);
             this.tokenLibraryTabPage.ResumeLayout(false);
             this.mapTabPage.ResumeLayout(false);
@@ -378,6 +523,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridThicknessSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridAlphaSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridScaleSlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,6 +559,14 @@
         private System.Windows.Forms.TrackBar gridVertOffsetSlider;
         private System.Windows.Forms.OpenFileDialog openMapImageDialog;
         private System.Windows.Forms.Button newTokenBtn;
-    }
+		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown numericUpDown2;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Splitter splitter1;
+		private System.Windows.Forms.SplitContainer splitContainer1;
+	}
 }
 
