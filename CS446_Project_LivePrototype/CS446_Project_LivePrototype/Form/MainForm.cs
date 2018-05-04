@@ -50,23 +50,22 @@ namespace CS446_Project_LivePrototype
 
             if (mainSplitContainer.SplitterDistance >= closedPos)
             {
-                mainSplitContainer.SplitterDistance = savedSplitterPos;
+                mainSplitContainer.SplitterDistance = mainSplitContainer.Width - savedSplitterPos;
             }
             else
             {
-                savedSplitterPos = mainSplitContainer.SplitterDistance;
+                savedSplitterPos = mainSplitContainer.Width - mainSplitContainer.SplitterDistance;
                 mainSplitContainer.SplitterDistance = mainSplitContainer.Width - mainSplitContainer.SplitterWidth;
             }
         }
 
-        private void testLoadMapBtn_Click(object sender, EventArgs e)
+        private void loadMapBackgroundBtn_Click(object sender, EventArgs e)
         {
             if (openMapImageDialog.ShowDialog() == DialogResult.OK)
             {
                 gameState.MapImageFile = openMapImageDialog.FileName;
                 mapControl.UpdateBackground();
             }
-            
         }
 
         private void zoomInBtn_Click(object sender, EventArgs e)
@@ -90,7 +89,7 @@ namespace CS446_Project_LivePrototype
 
         private void gridAlphaSlider_Scroll(object sender, EventArgs e)
         {
-            mapControl.GridTransparency = gridAlphaSlider.Value;
+            mapControl.GridTransparency = 255 - gridAlphaSlider.Value;
         }
 
         private void gridThicknessSlider_Scroll(object sender, EventArgs e)
@@ -100,12 +99,12 @@ namespace CS446_Project_LivePrototype
 
         private void gridHorzOffset_Scroll(object sender, EventArgs e)
         {
-            mapControl.GridHorizontalOffset = (float)gridHorzOffset.Value / 10.0f;
+           // mapControl.GridHorizontalOffset = (float)gridHorzOffset.Value / 10.0f;
         }
 
         private void gridVertOffsetSlider_Scroll(object sender, EventArgs e)
         {
-            mapControl.GridVerticalOffset = (float)gridVertOffsetSlider.Value / 10.0f;
+           // mapControl.GridVerticalOffset = (float)gridVertOffsetSlider.Value / 10.0f;
         }
 
         private void newTokenBtn_Click(object sender, EventArgs e)
@@ -125,17 +124,7 @@ namespace CS446_Project_LivePrototype
             }
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void rollDiceBtn_Click(object sender, EventArgs e)
         {
             int numDice = (int)numericUpDown1.Value;
             int numSides = (int)numericUpDown2.Value;
@@ -144,17 +133,54 @@ namespace CS446_Project_LivePrototype
             Random rnd = new Random();
 
             for (int i = numDice; i > 0; i--)
-                output += "  " + rnd.Next(1, numSides+1);
+                output += "  " + rnd.Next(1, numSides + 1);
 
             output.Trim();
 
             Console.WriteLine(output);
-            textBox1.Text = output;
+            diceOutputTextbox.Text = output;
         }
 
-        private void mapTabPage_Click(object sender, EventArgs e)
+        private void centerViewBtn_Click(object sender, EventArgs e)
         {
+            mapControl.CenterViewOnMap();
+        }
 
+        private void resetViewBtn_Click(object sender, EventArgs e)
+        {
+            mapControl.ZoomFactor = 1.0f;
+            mapControl.CenterViewOnMap();
+        }
+
+        private void shiftGridLeftBtn_Click(object sender, EventArgs e)
+        {
+            mapControl.GridHorizontalOffset -= MapControl.GRID_SHIFT_STEP;
+        }
+
+        private void shiftGridUpBtn_Click(object sender, EventArgs e)
+        {
+            mapControl.GridVerticalOffset -= MapControl.GRID_SHIFT_STEP;
+        }
+
+        private void shiftGridRightBtn_Click(object sender, EventArgs e)
+        {
+            mapControl.GridHorizontalOffset += MapControl.GRID_SHIFT_STEP;
+        }
+
+        private void shiftGridDownBtn_Click(object sender, EventArgs e)
+        {
+            mapControl.GridVerticalOffset += MapControl.GRID_SHIFT_STEP;
+        }
+
+        private void resetGridPosBtn_Click(object sender, EventArgs e)
+        {
+            mapControl.GridHorizontalOffset = 0.0f;
+            mapControl.GridVerticalOffset = 0.0f;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

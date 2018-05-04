@@ -21,10 +21,11 @@ namespace CS446_Project_LivePrototype
     public partial class MapControl : UserControl
     {
         public static readonly int MAX_GRID_THICKNESS = 6;
-        public static readonly int MIN_GRID_SCALE_FACTOR = 8;
+        public static readonly int MIN_GRID_SCALE_FACTOR = 10;
         public static readonly int MAX_GRID_SCALE_FACTOR = 25;
         public static readonly int MIN_GRID_SCALE = calcGridScale(MIN_GRID_SCALE_FACTOR);
         public static readonly int MAX_GRID_SCALE = calcGridScale(MAX_GRID_SCALE_FACTOR);
+        public static readonly float GRID_SHIFT_STEP = 0.1f;
         public static readonly float ZOOM_STEP = 1.25f;
         public static readonly float MAX_ZOOM = (float)Math.Pow(ZOOM_STEP, 12);
         public static readonly float MIN_ZOOM = (float)Math.Pow(ZOOM_STEP, -4);
@@ -230,37 +231,34 @@ namespace CS446_Project_LivePrototype
         // Centers view over the center of the map
         public void CenterViewOnMap()
         {
-            if (!HasBackground)
-            {
-                viewPosX = gridScale / 2;
-                viewPosY = gridScale / 2;
+            RectangleF worldRect = GetWorldUnitRect();
+            viewPosX = worldRect.Width / 2;
+            viewPosY = worldRect.Height / 2;
 
-                return;
-            }
-
-            RectangleF viewportRect = GetViewportUnitRect();
-            viewPosX = viewportRect.Width / 2;
-            viewPosY = viewportRect.Height / 2;
-
+            // Redraw control
             Refresh();
+        }
+
+        public float ZoomFactor
+        {
+            get { return viewZoom; }
+            set
+            {
+                viewZoom = Math.Min(Math.Max(MIN_ZOOM, value), MAX_ZOOM);
+
+                // Redraw control
+                Refresh();
+            }
         }
 
         public void ZoomIn()
         {
-            viewZoom *= ZOOM_STEP;
-            viewZoom = Math.Min(Math.Max(MIN_ZOOM, viewZoom), MAX_ZOOM);
-
-            // Redraw control
-            Refresh();
+            ZoomFactor *= ZOOM_STEP;
         }
 
         public void ZoomOut()
         {
-            viewZoom /= ZOOM_STEP;
-            viewZoom = Math.Min(Math.Max(MIN_ZOOM, viewZoom), MAX_ZOOM);
-
-            // Redraw control
-            Refresh();
+            ZoomFactor /= ZOOM_STEP;
         }
 
         // Calculates a grid scale based off of the given scale factor
@@ -321,8 +319,8 @@ namespace CS446_Project_LivePrototype
         // Draws the grid lines in the map window viewport
         protected virtual void drawGridLines(PaintEventArgs e, ref RectangleF viewPortRect)
         {
-            float firstVerticalLine = (float)Math.Ceiling(viewPortRect.Left);
-            float firstHorizontalLine = (float)Math.Ceiling(viewPortRect.Top);
+            float firstVerticalLine = (float)Math.Floor(viewPortRect.Left);
+            float firstHorizontalLine = (float)Math.Floor(viewPortRect.Top);
 
             Pen pen = new Pen(Color.FromArgb(gridAlpha, 0, 0, 0), gridThickness);
 
@@ -443,7 +441,7 @@ namespace CS446_Project_LivePrototype
             if (HasBackground)
             {
                 // Adjust height to match background image aspect ratio
-                worldRect.Height *= mapImage.Height / mapImage.Width;
+                worldRect.Height *= (float)mapImage.Height / mapImage.Width;
             }
 
             return worldRect;
