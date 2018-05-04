@@ -124,5 +124,37 @@ namespace CS446_Project_LivePrototype
                 mapControl.Refresh();
             }
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int numDice = (int)numericUpDown1.Value;
+            int numSides = (int)numericUpDown2.Value;
+            String output = "";
+
+            Random rnd = new Random();
+
+            for (int i = numDice; i > 0; i--)
+                output += "  " + rnd.Next(1, numSides+1);
+
+            output.Trim();
+
+            Console.WriteLine(output);
+            textBox1.Text = output;
+        }
+
+        private void mapTabPage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
