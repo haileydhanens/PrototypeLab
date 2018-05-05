@@ -33,9 +33,10 @@ namespace CS446_Project_LivePrototype
         private readonly object drawMutex = new object();
         private GameState gameState;
         private MapToken draggedToken = null;
+        private MapToken rightClickedToken = null;
         private MouseDragState mouseDragState;
         private Point mouseDownPos;
-        private bool mouseDown = false;
+        private bool leftMouseDown = false;
         private bool redrawNeeded = false;
         private bool tokenSnapToGrid = false;
         private Image mapImage = null;
@@ -487,20 +488,36 @@ namespace CS446_Project_LivePrototype
         // when calculating map drag offset
         private void MapControl_MouseDown(object sender, MouseEventArgs e)
         {
-            mouseDownPos = e.Location;
-            mouseDown = true;
-
             MapToken tokenUnderMouse = getTokenUnderMouse(e.Location);
+            mouseDownPos = e.Location;
 
-            if (tokenUnderMouse != null)
+            if (e.Button == MouseButtons.Left)
             {
-                tokenUnderMouse.MouseState = TokenMouseState.Drag;
-                this.draggedToken = tokenUnderMouse;
-                this.mouseDragState = MouseDragState.Token;
+                leftMouseDown = true;
+
+                if (tokenUnderMouse != null)
+                {
+                    tokenUnderMouse.MouseState = TokenMouseState.Drag;
+                    this.draggedToken = tokenUnderMouse;
+                    this.mouseDragState = MouseDragState.Token;
+                }
+                else
+                {
+                    this.mouseDragState = MouseDragState.Map;
+                }
             }
-            else
+            else if (e.Button == MouseButtons.Right)
             {
-                this.mouseDragState = MouseDragState.Map;
+                if (tokenUnderMouse != null)
+                {
+                    rightClickedToken = tokenUnderMouse;
+                    tokenContextMenu.Show(this, e.Location);
+                }
+                else
+                {
+                    rightClickedToken = null;
+                    mapContextMenu.Show(this, e.Location);
+                }
             }
 
             refreshIfNeeded();
@@ -513,7 +530,7 @@ namespace CS446_Project_LivePrototype
 
             updateActiveTokenMouseState(newMousePos);
 
-            if (mouseDown && !mouseDownPos.Equals(newMousePos))
+            if (leftMouseDown && !mouseDownPos.Equals(newMousePos))
             {
                 float xOffset = mouseDownPos.X - newMousePos.X;
                 float yOffset = mouseDownPos.Y - newMousePos.Y;
@@ -563,7 +580,7 @@ namespace CS446_Project_LivePrototype
                 draggedToken = null;
             }
 
-            mouseDown = false;
+            leftMouseDown = false;
 
             refreshIfNeeded();
         }
@@ -702,5 +719,64 @@ namespace CS446_Project_LivePrototype
 
             return destImage;
         }
+
+        private void centerViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RectangleF viewportRect = GetViewportUnitRect();
+            PointF mouseUnitPos = PixelPosToUnitPos(mouseDownPos, viewportRect);
+
+            this.ViewPosition = mouseUnitPos;
+
+            Refresh();
+        }
+
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ZoomIn();
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ZoomOut();
+        }
+
+        private void centerViewOnTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rightClickedToken == null) { return; }
+
+            this.ViewPosition = rightClickedToken.Position;
+
+            Refresh();
+        }
+
+        private void editTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditTokenForm editTokenForm = new EditTokenForm();
+            DialogResult result = editTokenForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                // Todo: Save updated token
+            }
+        }
+
+        private void duplicateTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rightClickedToken == null) { return; }
+
+            MapToken duplicateToken = new MapToken(rightClickedToken);
+            gameState.ActiveTokens.Add(duplicateToken);
+
+            Refresh();
+        }
+
+        private void removeTokenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (rightClickedToken == null) { return; }
+
+            gameState.ActiveTokens.Remove(rightClickedToken);
+
+            Refresh();
+        }
+        
     }
 }
