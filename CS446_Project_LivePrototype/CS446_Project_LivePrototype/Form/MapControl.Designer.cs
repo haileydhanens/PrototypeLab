@@ -34,12 +34,12 @@
             this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tokenContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.duplicateTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centerViewOnTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.editTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.duplicateTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapContextMenu.SuspendLayout();
             this.tokenContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -52,26 +52,26 @@
             this.zoomOutToolStripMenuItem});
             this.mapContextMenu.Name = "mapContextMenu";
             this.mapContextMenu.ShowImageMargin = false;
-            this.mapContextMenu.Size = new System.Drawing.Size(156, 92);
+            this.mapContextMenu.Size = new System.Drawing.Size(113, 70);
             // 
             // centerViewToolStripMenuItem
             // 
             this.centerViewToolStripMenuItem.Name = "centerViewToolStripMenuItem";
-            this.centerViewToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.centerViewToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.centerViewToolStripMenuItem.Text = "&Center View";
             this.centerViewToolStripMenuItem.Click += new System.EventHandler(this.centerViewToolStripMenuItem_Click);
             // 
             // zoomInToolStripMenuItem
             // 
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.zoomInToolStripMenuItem.Text = "Zoom &In";
             this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
             // zoomOutToolStripMenuItem
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.zoomOutToolStripMenuItem.Text = "Zoom &Out";
             this.zoomOutToolStripMenuItem.Click += new System.EventHandler(this.zoomOutToolStripMenuItem_Click);
             // 
@@ -88,30 +88,6 @@
             this.tokenContextMenu.ShowImageMargin = false;
             this.tokenContextMenu.Size = new System.Drawing.Size(167, 104);
             // 
-            // editTokenToolStripMenuItem
-            // 
-            this.editTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.editTokenToolStripMenuItem.Name = "editTokenToolStripMenuItem";
-            this.editTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.editTokenToolStripMenuItem.Text = "Edit Token";
-            this.editTokenToolStripMenuItem.Click += new System.EventHandler(this.editTokenToolStripMenuItem_Click);
-            // 
-            // removeTokenToolStripMenuItem
-            // 
-            this.removeTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.removeTokenToolStripMenuItem.Name = "removeTokenToolStripMenuItem";
-            this.removeTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.removeTokenToolStripMenuItem.Text = "Remove Token";
-            this.removeTokenToolStripMenuItem.Click += new System.EventHandler(this.removeTokenToolStripMenuItem_Click);
-            // 
-            // duplicateTokenToolStripMenuItem
-            // 
-            this.duplicateTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.duplicateTokenToolStripMenuItem.Name = "duplicateTokenToolStripMenuItem";
-            this.duplicateTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.duplicateTokenToolStripMenuItem.Text = "Duplicate Token";
-            this.duplicateTokenToolStripMenuItem.Click += new System.EventHandler(this.duplicateTokenToolStripMenuItem_Click);
-            // 
             // centerViewOnTokenToolStripMenuItem
             // 
             this.centerViewOnTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -125,16 +101,41 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
+            // editTokenToolStripMenuItem
+            // 
+            this.editTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.editTokenToolStripMenuItem.Name = "editTokenToolStripMenuItem";
+            this.editTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.editTokenToolStripMenuItem.Text = "Edit Token";
+            this.editTokenToolStripMenuItem.Click += new System.EventHandler(this.editTokenToolStripMenuItem_Click);
+            // 
+            // duplicateTokenToolStripMenuItem
+            // 
+            this.duplicateTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.duplicateTokenToolStripMenuItem.Name = "duplicateTokenToolStripMenuItem";
+            this.duplicateTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.duplicateTokenToolStripMenuItem.Text = "Duplicate Token";
+            this.duplicateTokenToolStripMenuItem.Click += new System.EventHandler(this.duplicateTokenToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(163, 6);
+            // 
+            // removeTokenToolStripMenuItem
+            // 
+            this.removeTokenToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.removeTokenToolStripMenuItem.Name = "removeTokenToolStripMenuItem";
+            this.removeTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.removeTokenToolStripMenuItem.Text = "Remove Token";
+            this.removeTokenToolStripMenuItem.Click += new System.EventHandler(this.removeTokenToolStripMenuItem_Click);
             // 
             // MapControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "MapControl";
             this.SizeChanged += new System.EventHandler(this.MapControl_SizeChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseDown);

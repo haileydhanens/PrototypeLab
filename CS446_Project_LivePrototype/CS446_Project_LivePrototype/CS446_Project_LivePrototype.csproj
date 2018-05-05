@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\MapToken.cs" />
+    <Compile Include="Data\TokenLibraryCollection.cs" />
     <Compile Include="Form\EditTokenForm.cs">
       <SubType>Form</SubType>
     </Compile>

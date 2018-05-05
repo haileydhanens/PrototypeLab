@@ -33,7 +33,7 @@
             this.enemyType_rad = new System.Windows.Forms.RadioButton();
             this.NPCtype_rad = new System.Windows.Forms.RadioButton();
             this.charPic = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tokenNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CharStats = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -42,36 +42,37 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Charisma = new System.Windows.Forms.NumericUpDown();
-            this.Wisdom = new System.Windows.Forms.NumericUpDown();
-            this.Intelligence = new System.Windows.Forms.NumericUpDown();
-            this.Constitution = new System.Windows.Forms.NumericUpDown();
-            this.Dexterity = new System.Windows.Forms.NumericUpDown();
-            this.Stength = new System.Windows.Forms.NumericUpDown();
+            this.tokenChrBox = new System.Windows.Forms.NumericUpDown();
+            this.tokenWisBox = new System.Windows.Forms.NumericUpDown();
+            this.tokenIntBox = new System.Windows.Forms.NumericUpDown();
+            this.tokenConstBox = new System.Windows.Forms.NumericUpDown();
+            this.tokenDexBox = new System.Windows.Forms.NumericUpDown();
+            this.tokenStrBox = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.AC = new System.Windows.Forms.NumericUpDown();
+            this.tokenACBox = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.HP = new System.Windows.Forms.NumericUpDown();
-            this.charNotes = new System.Windows.Forms.RichTextBox();
+            this.tokenHPBox = new System.Windows.Forms.NumericUpDown();
+            this.charNotesBox = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.charPic)).BeginInit();
             this.CharStats.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Charisma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Wisdom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Intelligence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Constitution)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dexterity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Stength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenChrBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenWisBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenIntBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenConstBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenDexBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenStrBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenACBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenHPBox)).BeginInit();
             this.SuspendLayout();
             // 
             // playerType_rad
             // 
             this.playerType_rad.AutoSize = true;
+            this.playerType_rad.Checked = true;
             this.playerType_rad.Location = new System.Drawing.Point(6, 42);
             this.playerType_rad.Name = "playerType_rad";
             this.playerType_rad.Size = new System.Drawing.Size(54, 17);
@@ -123,12 +124,12 @@
             this.charPic.TabIndex = 2;
             this.charPic.TabStop = false;
             // 
-            // textBox1
+            // tokenNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(207, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(255, 20);
-            this.textBox1.TabIndex = 3;
+            this.tokenNameBox.Location = new System.Drawing.Point(207, 21);
+            this.tokenNameBox.Name = "tokenNameBox";
+            this.tokenNameBox.Size = new System.Drawing.Size(255, 20);
+            this.tokenNameBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -147,16 +148,16 @@
             this.CharStats.Controls.Add(this.label6);
             this.CharStats.Controls.Add(this.label5);
             this.CharStats.Controls.Add(this.label4);
-            this.CharStats.Controls.Add(this.Charisma);
-            this.CharStats.Controls.Add(this.Wisdom);
-            this.CharStats.Controls.Add(this.Intelligence);
-            this.CharStats.Controls.Add(this.Constitution);
-            this.CharStats.Controls.Add(this.Dexterity);
-            this.CharStats.Controls.Add(this.Stength);
+            this.CharStats.Controls.Add(this.tokenChrBox);
+            this.CharStats.Controls.Add(this.tokenWisBox);
+            this.CharStats.Controls.Add(this.tokenIntBox);
+            this.CharStats.Controls.Add(this.tokenConstBox);
+            this.CharStats.Controls.Add(this.tokenDexBox);
+            this.CharStats.Controls.Add(this.tokenStrBox);
             this.CharStats.Controls.Add(this.label3);
-            this.CharStats.Controls.Add(this.AC);
+            this.CharStats.Controls.Add(this.tokenACBox);
             this.CharStats.Controls.Add(this.label2);
-            this.CharStats.Controls.Add(this.HP);
+            this.CharStats.Controls.Add(this.tokenHPBox);
             this.CharStats.Location = new System.Drawing.Point(12, 163);
             this.CharStats.Name = "CharStats";
             this.CharStats.Size = new System.Drawing.Size(450, 173);
@@ -224,79 +225,79 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Strength";
             // 
-            // Charisma
+            // tokenChrBox
             // 
-            this.Charisma.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Charisma.Location = new System.Drawing.Point(329, 139);
-            this.Charisma.Name = "Charisma";
-            this.Charisma.Size = new System.Drawing.Size(40, 20);
-            this.Charisma.TabIndex = 11;
-            this.Charisma.Value = new decimal(new int[] {
+            this.tokenChrBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenChrBox.Location = new System.Drawing.Point(329, 139);
+            this.tokenChrBox.Name = "tokenChrBox";
+            this.tokenChrBox.Size = new System.Drawing.Size(40, 20);
+            this.tokenChrBox.TabIndex = 11;
+            this.tokenChrBox.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // Wisdom
+            // tokenWisBox
             // 
-            this.Wisdom.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Wisdom.Location = new System.Drawing.Point(329, 99);
-            this.Wisdom.Name = "Wisdom";
-            this.Wisdom.Size = new System.Drawing.Size(40, 20);
-            this.Wisdom.TabIndex = 9;
-            this.Wisdom.Value = new decimal(new int[] {
+            this.tokenWisBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenWisBox.Location = new System.Drawing.Point(329, 99);
+            this.tokenWisBox.Name = "tokenWisBox";
+            this.tokenWisBox.Size = new System.Drawing.Size(40, 20);
+            this.tokenWisBox.TabIndex = 9;
+            this.tokenWisBox.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // Intelligence
+            // tokenIntBox
             // 
-            this.Intelligence.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Intelligence.Location = new System.Drawing.Point(329, 59);
-            this.Intelligence.Name = "Intelligence";
-            this.Intelligence.Size = new System.Drawing.Size(40, 20);
-            this.Intelligence.TabIndex = 7;
-            this.Intelligence.Value = new decimal(new int[] {
+            this.tokenIntBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenIntBox.Location = new System.Drawing.Point(329, 59);
+            this.tokenIntBox.Name = "tokenIntBox";
+            this.tokenIntBox.Size = new System.Drawing.Size(40, 20);
+            this.tokenIntBox.TabIndex = 7;
+            this.tokenIntBox.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // Constitution
+            // tokenConstBox
             // 
-            this.Constitution.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Constitution.Location = new System.Drawing.Point(149, 139);
-            this.Constitution.Name = "Constitution";
-            this.Constitution.Size = new System.Drawing.Size(42, 20);
-            this.Constitution.TabIndex = 6;
-            this.Constitution.Value = new decimal(new int[] {
+            this.tokenConstBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenConstBox.Location = new System.Drawing.Point(149, 139);
+            this.tokenConstBox.Name = "tokenConstBox";
+            this.tokenConstBox.Size = new System.Drawing.Size(42, 20);
+            this.tokenConstBox.TabIndex = 6;
+            this.tokenConstBox.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // Dexterity
+            // tokenDexBox
             // 
-            this.Dexterity.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Dexterity.Location = new System.Drawing.Point(149, 99);
-            this.Dexterity.Name = "Dexterity";
-            this.Dexterity.Size = new System.Drawing.Size(42, 20);
-            this.Dexterity.TabIndex = 5;
-            this.Dexterity.Value = new decimal(new int[] {
+            this.tokenDexBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenDexBox.Location = new System.Drawing.Point(149, 99);
+            this.tokenDexBox.Name = "tokenDexBox";
+            this.tokenDexBox.Size = new System.Drawing.Size(42, 20);
+            this.tokenDexBox.TabIndex = 5;
+            this.tokenDexBox.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // Stength
+            // tokenStrBox
             // 
-            this.Stength.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Stength.Location = new System.Drawing.Point(149, 59);
-            this.Stength.Name = "Stength";
-            this.Stength.Size = new System.Drawing.Size(40, 20);
-            this.Stength.TabIndex = 4;
-            this.Stength.Value = new decimal(new int[] {
+            this.tokenStrBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenStrBox.Location = new System.Drawing.Point(149, 59);
+            this.tokenStrBox.Name = "tokenStrBox";
+            this.tokenStrBox.Size = new System.Drawing.Size(40, 20);
+            this.tokenStrBox.TabIndex = 4;
+            this.tokenStrBox.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -312,14 +313,14 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Armor Class";
             // 
-            // AC
+            // tokenACBox
             // 
-            this.AC.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.AC.Location = new System.Drawing.Point(329, 19);
-            this.AC.Name = "AC";
-            this.AC.Size = new System.Drawing.Size(42, 20);
-            this.AC.TabIndex = 2;
-            this.AC.Value = new decimal(new int[] {
+            this.tokenACBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenACBox.Location = new System.Drawing.Point(329, 19);
+            this.tokenACBox.Name = "tokenACBox";
+            this.tokenACBox.Size = new System.Drawing.Size(42, 20);
+            this.tokenACBox.TabIndex = 2;
+            this.tokenACBox.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -335,31 +336,31 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Health Points";
             // 
-            // HP
+            // tokenHPBox
             // 
-            this.HP.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.HP.Location = new System.Drawing.Point(149, 19);
-            this.HP.Maximum = new decimal(new int[] {
+            this.tokenHPBox.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tokenHPBox.Location = new System.Drawing.Point(149, 19);
+            this.tokenHPBox.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.HP.Name = "HP";
-            this.HP.Size = new System.Drawing.Size(40, 20);
-            this.HP.TabIndex = 0;
-            this.HP.Value = new decimal(new int[] {
+            this.tokenHPBox.Name = "tokenHPBox";
+            this.tokenHPBox.Size = new System.Drawing.Size(40, 20);
+            this.tokenHPBox.TabIndex = 0;
+            this.tokenHPBox.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // charNotes
+            // charNotesBox
             // 
-            this.charNotes.Location = new System.Drawing.Point(12, 355);
-            this.charNotes.Name = "charNotes";
-            this.charNotes.Size = new System.Drawing.Size(449, 118);
-            this.charNotes.TabIndex = 6;
-            this.charNotes.Text = "";
+            this.charNotesBox.Location = new System.Drawing.Point(12, 355);
+            this.charNotesBox.Name = "charNotesBox";
+            this.charNotesBox.Size = new System.Drawing.Size(449, 118);
+            this.charNotesBox.TabIndex = 6;
+            this.charNotesBox.Text = "";
             // 
             // label10
             // 
@@ -398,10 +399,10 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.charNotes);
+            this.Controls.Add(this.charNotesBox);
             this.Controls.Add(this.CharStats);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tokenNameBox);
             this.Controls.Add(this.charPic);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -413,14 +414,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.charPic)).EndInit();
             this.CharStats.ResumeLayout(false);
             this.CharStats.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Charisma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Wisdom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Intelligence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Constitution)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Dexterity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Stength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenChrBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenWisBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenIntBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenConstBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenDexBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenStrBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenACBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tokenHPBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,26 +434,26 @@
         private System.Windows.Forms.RadioButton enemyType_rad;
         private System.Windows.Forms.RadioButton NPCtype_rad;
         private System.Windows.Forms.PictureBox charPic;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tokenNameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox CharStats;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown HP;
-        private System.Windows.Forms.NumericUpDown Charisma;
-        private System.Windows.Forms.NumericUpDown Wisdom;
-        private System.Windows.Forms.NumericUpDown Intelligence;
-        private System.Windows.Forms.NumericUpDown Constitution;
-        private System.Windows.Forms.NumericUpDown Dexterity;
-        private System.Windows.Forms.NumericUpDown Stength;
+        private System.Windows.Forms.NumericUpDown tokenHPBox;
+        private System.Windows.Forms.NumericUpDown tokenChrBox;
+        private System.Windows.Forms.NumericUpDown tokenWisBox;
+        private System.Windows.Forms.NumericUpDown tokenIntBox;
+        private System.Windows.Forms.NumericUpDown tokenConstBox;
+        private System.Windows.Forms.NumericUpDown tokenDexBox;
+        private System.Windows.Forms.NumericUpDown tokenStrBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown AC;
+        private System.Windows.Forms.NumericUpDown tokenACBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox charNotes;
+        private System.Windows.Forms.RichTextBox charNotesBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;

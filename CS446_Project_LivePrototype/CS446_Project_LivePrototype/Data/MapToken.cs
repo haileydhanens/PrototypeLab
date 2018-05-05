@@ -36,6 +36,8 @@ namespace CS446_Project_LivePrototype
         public int Wisdom;
         public int Charisma;
 
+        public string Notes;
+
         public TokenData(string name, TokenType tokenType)
         {
             this.name = name;
@@ -50,6 +52,7 @@ namespace CS446_Project_LivePrototype
             this.Intelligence = 10;
             this.Wisdom = 10;
             this.Charisma = 10;
+            this.Notes = "";
         }
 
         // Copy constructor
@@ -67,6 +70,7 @@ namespace CS446_Project_LivePrototype
             this.Intelligence = other.Intelligence;
             this.Wisdom = other.Wisdom;
             this.Charisma = other.Charisma;
+            this.Notes = other.Notes;
         }
 
         public string Name
@@ -104,6 +108,23 @@ namespace CS446_Project_LivePrototype
                 this.currentHP = Math.Min(this.currentHP, this.maxHP);
             }
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) { return false; }
+
+            return this.name.Equals(((TokenData)obj).Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.name.GetHashCode();
+        }
     }
 
     // ========================================================
@@ -112,7 +133,8 @@ namespace CS446_Project_LivePrototype
     {
         Idle,
         Hover,
-        Drag
+        Drag,
+        Selected
     }
 
     public class MapToken

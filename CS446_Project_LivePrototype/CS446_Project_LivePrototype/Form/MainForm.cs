@@ -33,6 +33,9 @@ namespace CS446_Project_LivePrototype
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
+            // Open map tab by default
+            rightPanelTabControl.SelectedIndex = 2;
+
             gridThicknessSlider.Minimum = 1;
             gridThicknessSlider.Maximum = MapControl.MAX_GRID_THICKNESS;
 
@@ -43,6 +46,8 @@ namespace CS446_Project_LivePrototype
 
             savedSplitterPos = mainSplitContainer.SplitterDistance;
             snapTokensToGridCheckbox.CheckState = mapControl.TokenSnapToGrid ? CheckState.Checked : CheckState.Unchecked;
+
+            gameState.TokenLibrary.TokenAddedRemovedEvent += TokenLibrary_TokenAddedRemovedEvent;
         }
 
         private void mainSplitContainer_DoubleClick(object sender, EventArgs e)
@@ -108,23 +113,6 @@ namespace CS446_Project_LivePrototype
            // mapControl.GridVerticalOffset = (float)gridVertOffsetSlider.Value / 10.0f;
         }
 
-        private void newTokenBtn_Click(object sender, EventArgs e)
-        {
-            EditTokenForm charForm = new EditTokenForm();
-            DialogResult result = charForm.ShowDialog(this);
-
-            if (result == DialogResult.OK)
-            {
-                RectangleF worldRect = mapControl.GetWorldUnitRect();
-
-                TokenData newData = new TokenData("Test Token", TokenType.Player);
-                MapToken newToken = new MapToken(mapControl, ref newData, new PointF(worldRect.Width / 2, worldRect.Height / 2));
-                gameState.ActiveTokens.Add(newToken);
-
-                mapControl.Refresh();
-            }
-        }
-
         private void rollDiceBtn_Click(object sender, EventArgs e)
         {
             int numDice = (int)numericUpDown1.Value;
@@ -188,5 +176,129 @@ namespace CS446_Project_LivePrototype
         {
             mapControl.TokenSnapToGrid = (snapTokensToGridCheckbox.CheckState == CheckState.Checked);
         }
+
+        private void newTokenBtn_Click(object sender, EventArgs e)
+        {
+            EditTokenForm charForm = new EditTokenForm(gameState);
+            DialogResult result = charForm.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                TokenData newData = charForm.GetTokenData();
+                gameState.TokenLibrary.Add(ref newData);
+            }
+        }
+
+        private void editLibTokenBtn_Click(object sender, EventArgs e)
+        {
+            int curSelectedIndex = tokenLibList.SelectedIndex;
+
+            if (curSelectedIndex < 0)
+            {
+                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            TokenData tokenData = gameState.TokenLibrary[(string)tokenLibList.SelectedItem];
+
+            EditTokenForm charForm = new EditTokenForm(gameState);
+            charForm.SetTokenData(ref tokenData);
+            DialogResult result = charForm.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                tokenData = charForm.GetTokenData();
+                gameState.TokenLibrary[tokenData.Name] = tokenData;
+            }
+        }
+
+        private void placeTokenOnMapBtn_Click(object sender, EventArgs e)
+        {
+            int curSelectedIndex = tokenLibList.SelectedIndex;
+
+            if (curSelectedIndex < 0)
+            {
+                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            TokenData selectedToken = gameState.TokenLibrary[(string)tokenLibList.SelectedItem];
+
+            MapToken newToken = new MapToken(mapControl, ref selectedToken, mapControl.ViewPosition);
+            gameState.ActiveTokens.Add(newToken);
+
+            // Make sure token is within the map bounds
+            newToken.Position = newToken.Position;
+
+            mapControl.Refresh();
+        }
+
+        // This event is automatically called whenever a token is added or removed from the token library
+        private void TokenLibrary_TokenAddedRemovedEvent(object sender, TokenAddedRemovedEventArgs a)
+        {
+            refreshTokenLibList();
+        }
+
+        private void refreshTokenLibList()
+        {
+            string selectedToken = null;
+
+            if (tokenLibList.SelectedIndex >= 0)
+            {
+                selectedToken = (string)tokenLibList.SelectedItem;
+            }
+
+            tokenLibList.Items.Clear();
+
+            var enumerator = gameState.TokenLibrary.GetEnumerator();
+
+            List<string> filteredList = new List<string>();
+
+            while (enumerator.MoveNext())
+            {
+                TokenData token = enumerator.Current;
+
+                if (token.TokenType == TokenType.Player && libPlayerFilterCheck.Checked)
+                {
+                    filteredList.Add(token.Name);
+                }
+                else if (token.TokenType == TokenType.Enemy && libEnemyFilterCheck.Checked)
+                {
+                    filteredList.Add(token.Name);
+                }
+                else if (token.TokenType == TokenType.NPC && libNonplayerFilterCheck.Checked)
+                {
+                    filteredList.Add(token.Name);
+                }
+            }
+
+            // Sort list of names
+            filteredList.Sort();
+
+            // Add each name to lib list
+            foreach (string item in filteredList)
+            {
+                tokenLibList.Items.Add(item);
+            }
+
+            tokenLibList.SelectedItem = selectedToken;
+        }
+
+        private void libPlayerFilterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshTokenLibList();
+        }
+
+        private void libEnemyFilterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshTokenLibList();
+        }
+
+        private void libNonplayerFilterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshTokenLibList();
+        }
+
+        
     }
 }

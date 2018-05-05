@@ -11,6 +11,7 @@ namespace CS446_Project_LivePrototype
     public class GameState
     {
         public string MapImageFile = null;
+        public TokenLibraryCollection TokenLibrary = new TokenLibraryCollection();
         public List<MapToken> ActiveTokens = new List<MapToken>();
     }
 }

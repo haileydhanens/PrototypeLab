@@ -751,11 +751,18 @@ namespace CS446_Project_LivePrototype
 
         private void editTokenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditTokenForm editTokenForm = new EditTokenForm();
+            if (rightClickedToken == null) { return; }
+
+            TokenData data = rightClickedToken.GetTokenData();
+
+            EditTokenForm editTokenForm = new EditTokenForm(gameState);
+            editTokenForm.SetTokenData(ref data);
+
             DialogResult result = editTokenForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                // Todo: Save updated token
+                data = editTokenForm.GetTokenData();
+                rightClickedToken.SetTokenData(ref data);
             }
         }
 
