@@ -39,8 +39,20 @@
             this.rightPanelSplitContainer = new System.Windows.Forms.SplitContainer();
             this.rightPanelTabControl = new System.Windows.Forms.TabControl();
             this.activeTokensTabPage = new System.Windows.Forms.TabPage();
+            this.activeTokensList = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.activeTokEnemyFilterCheck = new System.Windows.Forms.CheckBox();
+            this.activeTokNonPlayerFilterCheck = new System.Windows.Forms.CheckBox();
+            this.activeTokPlayerFilterCheck = new System.Windows.Forms.CheckBox();
             this.snapTokensToGridCheckbox = new System.Windows.Forms.CheckBox();
             this.tokenLibraryTabPage = new System.Windows.Forms.TabPage();
+            this.editLibTokenBtn = new System.Windows.Forms.Button();
+            this.placeTokenOnMapBtn = new System.Windows.Forms.Button();
+            this.tokenLibList = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.libEnemyFilterCheck = new System.Windows.Forms.CheckBox();
+            this.libNonplayerFilterCheck = new System.Windows.Forms.CheckBox();
+            this.libPlayerFilterCheck = new System.Windows.Forms.CheckBox();
             this.newLibTokenBtn = new System.Windows.Forms.Button();
             this.mapTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -68,13 +80,9 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.openMapImageDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.libPlayerFilterCheck = new System.Windows.Forms.CheckBox();
-            this.libNonplayerFilterCheck = new System.Windows.Forms.CheckBox();
-            this.libEnemyFilterCheck = new System.Windows.Forms.CheckBox();
-            this.tokenLibList = new System.Windows.Forms.ListBox();
-            this.placeTokenOnMapBtn = new System.Windows.Forms.Button();
-            this.editLibTokenBtn = new System.Windows.Forms.Button();
+            this.actTokLocateBtn = new System.Windows.Forms.Button();
+            this.actTokEditBtn = new System.Windows.Forms.Button();
+            this.actTokRemoveBtn = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel2.SuspendLayout();
@@ -85,7 +93,9 @@
             this.rightPanelSplitContainer.SuspendLayout();
             this.rightPanelTabControl.SuspendLayout();
             this.activeTokensTabPage.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.tokenLibraryTabPage.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.mapTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridScaleSlider)).BeginInit();
@@ -94,7 +104,6 @@
             this.viewGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -166,7 +175,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 0;
             this.mainSplitContainer.Size = new System.Drawing.Size(784, 537);
-            this.mainSplitContainer.SplitterDistance = 551;
+            this.mainSplitContainer.SplitterDistance = 547;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -194,7 +203,7 @@
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.diceOutputTextbox);
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.numericUpDown2);
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.numericUpDown1);
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(225, 535);
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(229, 535);
             this.rightPanelSplitContainer.SplitterDistance = 440;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
@@ -208,24 +217,88 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(225, 440);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(229, 440);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
             // 
+            this.activeTokensTabPage.Controls.Add(this.actTokRemoveBtn);
+            this.activeTokensTabPage.Controls.Add(this.actTokEditBtn);
+            this.activeTokensTabPage.Controls.Add(this.actTokLocateBtn);
+            this.activeTokensTabPage.Controls.Add(this.activeTokensList);
+            this.activeTokensTabPage.Controls.Add(this.groupBox3);
             this.activeTokensTabPage.Controls.Add(this.snapTokensToGridCheckbox);
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
             this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(217, 414);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(221, 414);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
             // 
+            // activeTokensList
+            // 
+            this.activeTokensList.FormattingEnabled = true;
+            this.activeTokensList.Location = new System.Drawing.Point(6, 83);
+            this.activeTokensList.Name = "activeTokensList";
+            this.activeTokensList.Size = new System.Drawing.Size(204, 290);
+            this.activeTokensList.TabIndex = 3;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.activeTokEnemyFilterCheck);
+            this.groupBox3.Controls.Add(this.activeTokNonPlayerFilterCheck);
+            this.groupBox3.Controls.Add(this.activeTokPlayerFilterCheck);
+            this.groupBox3.Location = new System.Drawing.Point(6, 30);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(204, 47);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filter";
+            // 
+            // activeTokEnemyFilterCheck
+            // 
+            this.activeTokEnemyFilterCheck.AutoSize = true;
+            this.activeTokEnemyFilterCheck.Checked = true;
+            this.activeTokEnemyFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activeTokEnemyFilterCheck.Location = new System.Drawing.Point(61, 19);
+            this.activeTokEnemyFilterCheck.Name = "activeTokEnemyFilterCheck";
+            this.activeTokEnemyFilterCheck.Size = new System.Drawing.Size(58, 17);
+            this.activeTokEnemyFilterCheck.TabIndex = 2;
+            this.activeTokEnemyFilterCheck.Text = "Enemy";
+            this.activeTokEnemyFilterCheck.UseVisualStyleBackColor = true;
+            this.activeTokEnemyFilterCheck.CheckedChanged += new System.EventHandler(this.activeTokEnemyFilterCheck_CheckedChanged);
+            // 
+            // activeTokNonPlayerFilterCheck
+            // 
+            this.activeTokNonPlayerFilterCheck.AutoSize = true;
+            this.activeTokNonPlayerFilterCheck.Checked = true;
+            this.activeTokNonPlayerFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activeTokNonPlayerFilterCheck.Location = new System.Drawing.Point(121, 19);
+            this.activeTokNonPlayerFilterCheck.Name = "activeTokNonPlayerFilterCheck";
+            this.activeTokNonPlayerFilterCheck.Size = new System.Drawing.Size(77, 17);
+            this.activeTokNonPlayerFilterCheck.TabIndex = 1;
+            this.activeTokNonPlayerFilterCheck.Text = "Non-player";
+            this.activeTokNonPlayerFilterCheck.UseVisualStyleBackColor = true;
+            this.activeTokNonPlayerFilterCheck.CheckedChanged += new System.EventHandler(this.activeTokNonPlayerFilterCheck_CheckedChanged);
+            // 
+            // activeTokPlayerFilterCheck
+            // 
+            this.activeTokPlayerFilterCheck.AutoSize = true;
+            this.activeTokPlayerFilterCheck.Checked = true;
+            this.activeTokPlayerFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activeTokPlayerFilterCheck.Location = new System.Drawing.Point(6, 19);
+            this.activeTokPlayerFilterCheck.Name = "activeTokPlayerFilterCheck";
+            this.activeTokPlayerFilterCheck.Size = new System.Drawing.Size(55, 17);
+            this.activeTokPlayerFilterCheck.TabIndex = 0;
+            this.activeTokPlayerFilterCheck.Text = "Player";
+            this.activeTokPlayerFilterCheck.UseVisualStyleBackColor = true;
+            this.activeTokPlayerFilterCheck.CheckedChanged += new System.EventHandler(this.activeTokPlayerFilterCheck_CheckedChanged);
+            // 
             // snapTokensToGridCheckbox
             // 
             this.snapTokensToGridCheckbox.AutoSize = true;
-            this.snapTokensToGridCheckbox.Location = new System.Drawing.Point(9, 7);
+            this.snapTokensToGridCheckbox.Location = new System.Drawing.Point(6, 7);
             this.snapTokensToGridCheckbox.Name = "snapTokensToGridCheckbox";
             this.snapTokensToGridCheckbox.Size = new System.Drawing.Size(124, 17);
             this.snapTokensToGridCheckbox.TabIndex = 0;
@@ -243,10 +316,91 @@
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
             this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(217, 414);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(221, 414);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
+            // 
+            // editLibTokenBtn
+            // 
+            this.editLibTokenBtn.Location = new System.Drawing.Point(76, 381);
+            this.editLibTokenBtn.Name = "editLibTokenBtn";
+            this.editLibTokenBtn.Size = new System.Drawing.Size(64, 23);
+            this.editLibTokenBtn.TabIndex = 4;
+            this.editLibTokenBtn.Text = "Edit ...";
+            this.editLibTokenBtn.UseVisualStyleBackColor = true;
+            this.editLibTokenBtn.Click += new System.EventHandler(this.editLibTokenBtn_Click);
+            // 
+            // placeTokenOnMapBtn
+            // 
+            this.placeTokenOnMapBtn.Location = new System.Drawing.Point(6, 381);
+            this.placeTokenOnMapBtn.Name = "placeTokenOnMapBtn";
+            this.placeTokenOnMapBtn.Size = new System.Drawing.Size(64, 23);
+            this.placeTokenOnMapBtn.TabIndex = 3;
+            this.placeTokenOnMapBtn.Text = "<- Place";
+            this.placeTokenOnMapBtn.UseVisualStyleBackColor = true;
+            this.placeTokenOnMapBtn.Click += new System.EventHandler(this.placeTokenOnMapBtn_Click);
+            // 
+            // tokenLibList
+            // 
+            this.tokenLibList.FormattingEnabled = true;
+            this.tokenLibList.Location = new System.Drawing.Point(6, 59);
+            this.tokenLibList.Name = "tokenLibList";
+            this.tokenLibList.Size = new System.Drawing.Size(204, 316);
+            this.tokenLibList.TabIndex = 2;
+            this.tokenLibList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tokenLibList_KeyDown);
+            this.tokenLibList.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.tokenLibList_PreviewKeyDown);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.libEnemyFilterCheck);
+            this.groupBox2.Controls.Add(this.libNonplayerFilterCheck);
+            this.groupBox2.Controls.Add(this.libPlayerFilterCheck);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(204, 47);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filter";
+            // 
+            // libEnemyFilterCheck
+            // 
+            this.libEnemyFilterCheck.AutoSize = true;
+            this.libEnemyFilterCheck.Checked = true;
+            this.libEnemyFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.libEnemyFilterCheck.Location = new System.Drawing.Point(61, 19);
+            this.libEnemyFilterCheck.Name = "libEnemyFilterCheck";
+            this.libEnemyFilterCheck.Size = new System.Drawing.Size(58, 17);
+            this.libEnemyFilterCheck.TabIndex = 2;
+            this.libEnemyFilterCheck.Text = "Enemy";
+            this.libEnemyFilterCheck.UseVisualStyleBackColor = true;
+            this.libEnemyFilterCheck.CheckedChanged += new System.EventHandler(this.libEnemyFilterCheck_CheckedChanged);
+            // 
+            // libNonplayerFilterCheck
+            // 
+            this.libNonplayerFilterCheck.AutoSize = true;
+            this.libNonplayerFilterCheck.Checked = true;
+            this.libNonplayerFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.libNonplayerFilterCheck.Location = new System.Drawing.Point(121, 19);
+            this.libNonplayerFilterCheck.Name = "libNonplayerFilterCheck";
+            this.libNonplayerFilterCheck.Size = new System.Drawing.Size(77, 17);
+            this.libNonplayerFilterCheck.TabIndex = 1;
+            this.libNonplayerFilterCheck.Text = "Non-player";
+            this.libNonplayerFilterCheck.UseVisualStyleBackColor = true;
+            this.libNonplayerFilterCheck.CheckedChanged += new System.EventHandler(this.libNonplayerFilterCheck_CheckedChanged);
+            // 
+            // libPlayerFilterCheck
+            // 
+            this.libPlayerFilterCheck.AutoSize = true;
+            this.libPlayerFilterCheck.Checked = true;
+            this.libPlayerFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.libPlayerFilterCheck.Location = new System.Drawing.Point(6, 19);
+            this.libPlayerFilterCheck.Name = "libPlayerFilterCheck";
+            this.libPlayerFilterCheck.Size = new System.Drawing.Size(55, 17);
+            this.libPlayerFilterCheck.TabIndex = 0;
+            this.libPlayerFilterCheck.Text = "Player";
+            this.libPlayerFilterCheck.UseVisualStyleBackColor = true;
+            this.libPlayerFilterCheck.CheckedChanged += new System.EventHandler(this.libPlayerFilterCheck_CheckedChanged);
             // 
             // newLibTokenBtn
             // 
@@ -266,7 +420,7 @@
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
             this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.mapTabPage.Size = new System.Drawing.Size(217, 414);
+            this.mapTabPage.Size = new System.Drawing.Size(219, 414);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -288,7 +442,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(9, 125);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(201, 283);
+            this.groupBox1.Size = new System.Drawing.Size(203, 283);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grid Settings";
@@ -355,7 +509,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(9, 242);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(186, 32);
+            this.gridScaleSlider.Size = new System.Drawing.Size(188, 32);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -377,7 +531,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(9, 188);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(186, 31);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(188, 31);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
             // 
@@ -399,7 +553,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(186, 32);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(188, 32);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -424,7 +578,7 @@
             this.viewGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewGroupBox.Location = new System.Drawing.Point(9, 39);
             this.viewGroupBox.Name = "viewGroupBox";
-            this.viewGroupBox.Size = new System.Drawing.Size(201, 80);
+            this.viewGroupBox.Size = new System.Drawing.Size(203, 80);
             this.viewGroupBox.TabIndex = 17;
             this.viewGroupBox.TabStop = false;
             this.viewGroupBox.Text = "View Settings";
@@ -482,7 +636,7 @@
             // rollDiceBtn
             // 
             this.rollDiceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rollDiceBtn.Location = new System.Drawing.Point(167, 40);
+            this.rollDiceBtn.Location = new System.Drawing.Point(171, 40);
             this.rollDiceBtn.Name = "rollDiceBtn";
             this.rollDiceBtn.Size = new System.Drawing.Size(54, 48);
             this.rollDiceBtn.TabIndex = 5;
@@ -515,7 +669,7 @@
             this.diceOutputTextbox.Location = new System.Drawing.Point(10, 14);
             this.diceOutputTextbox.Name = "diceOutputTextbox";
             this.diceOutputTextbox.ReadOnly = true;
-            this.diceOutputTextbox.Size = new System.Drawing.Size(211, 20);
+            this.diceOutputTextbox.Size = new System.Drawing.Size(215, 20);
             this.diceOutputTextbox.TabIndex = 2;
             // 
             // numericUpDown2
@@ -529,7 +683,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(68, 20);
             this.numericUpDown2.TabIndex = 1;
             this.numericUpDown2.Value = new decimal(new int[] {
             20,
@@ -553,7 +707,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(68, 20);
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -566,84 +720,35 @@
             this.openMapImageDialog.Filter = "Image|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff";
             this.openMapImageDialog.RestoreDirectory = true;
             // 
-            // groupBox2
+            // actTokLocateBtn
             // 
-            this.groupBox2.Controls.Add(this.libEnemyFilterCheck);
-            this.groupBox2.Controls.Add(this.libNonplayerFilterCheck);
-            this.groupBox2.Controls.Add(this.libPlayerFilterCheck);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(204, 47);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filter";
+            this.actTokLocateBtn.Location = new System.Drawing.Point(6, 379);
+            this.actTokLocateBtn.Name = "actTokLocateBtn";
+            this.actTokLocateBtn.Size = new System.Drawing.Size(64, 23);
+            this.actTokLocateBtn.TabIndex = 4;
+            this.actTokLocateBtn.Text = "Locate";
+            this.actTokLocateBtn.UseVisualStyleBackColor = true;
+            this.actTokLocateBtn.Click += new System.EventHandler(this.actTokLocateBtn_Click);
             // 
-            // libPlayerFilterCheck
+            // actTokEditBtn
             // 
-            this.libPlayerFilterCheck.AutoSize = true;
-            this.libPlayerFilterCheck.Checked = true;
-            this.libPlayerFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.libPlayerFilterCheck.Location = new System.Drawing.Point(6, 19);
-            this.libPlayerFilterCheck.Name = "libPlayerFilterCheck";
-            this.libPlayerFilterCheck.Size = new System.Drawing.Size(55, 17);
-            this.libPlayerFilterCheck.TabIndex = 0;
-            this.libPlayerFilterCheck.Text = "Player";
-            this.libPlayerFilterCheck.UseVisualStyleBackColor = true;
-            this.libPlayerFilterCheck.CheckedChanged += new System.EventHandler(this.libPlayerFilterCheck_CheckedChanged);
+            this.actTokEditBtn.Location = new System.Drawing.Point(76, 379);
+            this.actTokEditBtn.Name = "actTokEditBtn";
+            this.actTokEditBtn.Size = new System.Drawing.Size(64, 23);
+            this.actTokEditBtn.TabIndex = 5;
+            this.actTokEditBtn.Text = "Edit ...";
+            this.actTokEditBtn.UseVisualStyleBackColor = true;
+            this.actTokEditBtn.Click += new System.EventHandler(this.actTokEditBtn_Click);
             // 
-            // libNonplayerFilterCheck
+            // actTokRemoveBtn
             // 
-            this.libNonplayerFilterCheck.AutoSize = true;
-            this.libNonplayerFilterCheck.Checked = true;
-            this.libNonplayerFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.libNonplayerFilterCheck.Location = new System.Drawing.Point(121, 19);
-            this.libNonplayerFilterCheck.Name = "libNonplayerFilterCheck";
-            this.libNonplayerFilterCheck.Size = new System.Drawing.Size(77, 17);
-            this.libNonplayerFilterCheck.TabIndex = 1;
-            this.libNonplayerFilterCheck.Text = "Non-player";
-            this.libNonplayerFilterCheck.UseVisualStyleBackColor = true;
-            this.libNonplayerFilterCheck.CheckedChanged += new System.EventHandler(this.libNonplayerFilterCheck_CheckedChanged);
-            // 
-            // libEnemyFilterCheck
-            // 
-            this.libEnemyFilterCheck.AutoSize = true;
-            this.libEnemyFilterCheck.Checked = true;
-            this.libEnemyFilterCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.libEnemyFilterCheck.Location = new System.Drawing.Point(61, 19);
-            this.libEnemyFilterCheck.Name = "libEnemyFilterCheck";
-            this.libEnemyFilterCheck.Size = new System.Drawing.Size(58, 17);
-            this.libEnemyFilterCheck.TabIndex = 2;
-            this.libEnemyFilterCheck.Text = "Enemy";
-            this.libEnemyFilterCheck.UseVisualStyleBackColor = true;
-            this.libEnemyFilterCheck.CheckedChanged += new System.EventHandler(this.libEnemyFilterCheck_CheckedChanged);
-            // 
-            // tokenLibList
-            // 
-            this.tokenLibList.FormattingEnabled = true;
-            this.tokenLibList.Location = new System.Drawing.Point(6, 59);
-            this.tokenLibList.Name = "tokenLibList";
-            this.tokenLibList.Size = new System.Drawing.Size(204, 316);
-            this.tokenLibList.TabIndex = 2;
-            // 
-            // placeTokenOnMapBtn
-            // 
-            this.placeTokenOnMapBtn.Location = new System.Drawing.Point(6, 381);
-            this.placeTokenOnMapBtn.Name = "placeTokenOnMapBtn";
-            this.placeTokenOnMapBtn.Size = new System.Drawing.Size(64, 23);
-            this.placeTokenOnMapBtn.TabIndex = 3;
-            this.placeTokenOnMapBtn.Text = "<- Place";
-            this.placeTokenOnMapBtn.UseVisualStyleBackColor = true;
-            this.placeTokenOnMapBtn.Click += new System.EventHandler(this.placeTokenOnMapBtn_Click);
-            // 
-            // editLibTokenBtn
-            // 
-            this.editLibTokenBtn.Location = new System.Drawing.Point(76, 381);
-            this.editLibTokenBtn.Name = "editLibTokenBtn";
-            this.editLibTokenBtn.Size = new System.Drawing.Size(64, 23);
-            this.editLibTokenBtn.TabIndex = 4;
-            this.editLibTokenBtn.Text = "Edit ...";
-            this.editLibTokenBtn.UseVisualStyleBackColor = true;
-            this.editLibTokenBtn.Click += new System.EventHandler(this.editLibTokenBtn_Click);
+            this.actTokRemoveBtn.Location = new System.Drawing.Point(146, 379);
+            this.actTokRemoveBtn.Name = "actTokRemoveBtn";
+            this.actTokRemoveBtn.Size = new System.Drawing.Size(64, 23);
+            this.actTokRemoveBtn.TabIndex = 6;
+            this.actTokRemoveBtn.Text = "Remove";
+            this.actTokRemoveBtn.UseVisualStyleBackColor = true;
+            this.actTokRemoveBtn.Click += new System.EventHandler(this.actTokRemoveBtn_Click);
             // 
             // MainForm
             // 
@@ -670,7 +775,11 @@
             this.rightPanelTabControl.ResumeLayout(false);
             this.activeTokensTabPage.ResumeLayout(false);
             this.activeTokensTabPage.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tokenLibraryTabPage.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.mapTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -680,8 +789,6 @@
             this.viewGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -736,6 +843,14 @@
         private System.Windows.Forms.Button editLibTokenBtn;
         private System.Windows.Forms.Button placeTokenOnMapBtn;
         private System.Windows.Forms.ListBox tokenLibList;
+        private System.Windows.Forms.ListBox activeTokensList;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox activeTokEnemyFilterCheck;
+        private System.Windows.Forms.CheckBox activeTokNonPlayerFilterCheck;
+        private System.Windows.Forms.CheckBox activeTokPlayerFilterCheck;
+        private System.Windows.Forms.Button actTokRemoveBtn;
+        private System.Windows.Forms.Button actTokEditBtn;
+        private System.Windows.Forms.Button actTokLocateBtn;
     }
 }
 

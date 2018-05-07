@@ -44,7 +44,6 @@ C:\Users\hdbut_000\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS4
 C:\Users\hdbut_000\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.csproj.CoreCompileInputs.cache
 C:\Users\hdbut_000\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.exe
 C:\Users\hdbut_000\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.pdb
-E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.csprojResolveAssemblyReference.cache
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.MainForm.resources
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.MapControl.resources
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.Properties.Resources.resources

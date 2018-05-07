@@ -27,6 +27,7 @@ namespace CS446_Project_LivePrototype
         public static readonly int MAX_GRID_SCALE = calcGridScale(MAX_GRID_SCALE_FACTOR);
         public static readonly float GRID_SHIFT_STEP = 0.1f;
         public static readonly float ZOOM_STEP = 1.25f;
+        public static readonly float PAN_STEP = 0.1f;
         public static readonly float MAX_ZOOM = (float)Math.Pow(ZOOM_STEP, 12);
         public static readonly float MIN_ZOOM = (float)Math.Pow(ZOOM_STEP, -4);
 
@@ -59,7 +60,14 @@ namespace CS446_Project_LivePrototype
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
+            gameState.ActiveTokens.MapTokenAddedRemovedEvent += ActiveTokens_MapTokenAddedRemovedEvent;
+
             CenterViewOnMap();
+        }
+
+        private void ActiveTokens_MapTokenAddedRemovedEvent(object sender, MapTokenAddedRemovedEventArgs a)
+        {
+            Refresh();
         }
 
         // This is a little hack to try and speed up the drawing process
@@ -221,6 +229,8 @@ namespace CS446_Project_LivePrototype
             {
                 viewPosX = value.X;
                 viewPosY = value.Y;
+
+                Refresh();
             }
         }
 
@@ -267,6 +277,30 @@ namespace CS446_Project_LivePrototype
         public void ZoomOut()
         {
             ZoomFactor /= ZOOM_STEP;
+        }
+
+        public void PanLeft()
+        {
+            viewPosX -= (PAN_STEP * (float)gridScale) / ZoomFactor;
+            Refresh();
+        }
+
+        public void PanRight()
+        {
+            viewPosX += (PAN_STEP * (float)gridScale) / ZoomFactor;
+            Refresh();
+        }
+
+        public void PanUp()
+        {
+            viewPosY -= (PAN_STEP * (float)gridScale) / ZoomFactor;
+            Refresh();
+        }
+
+        public void PanDown()
+        {
+            viewPosY += (PAN_STEP * (float)gridScale) / ZoomFactor;
+            Refresh();
         }
 
         // Calculates a grid scale based off of the given scale factor
@@ -784,6 +818,37 @@ namespace CS446_Project_LivePrototype
 
             Refresh();
         }
-        
+
+        private void MapControl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Up:
+                case Keys.Down:
+                    e.IsInputKey = true;
+                    break;
+            }
+        }
+
+        private void MapControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    PanLeft();
+                    break;
+                case Keys.Right:
+                    PanRight();
+                    break;
+                case Keys.Up:
+                    PanUp();
+                    break;
+                case Keys.Down:
+                    PanDown();
+                    break;
+            }
+        }
     }
 }

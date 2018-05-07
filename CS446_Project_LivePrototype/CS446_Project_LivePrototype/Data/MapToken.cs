@@ -176,6 +176,11 @@ namespace CS446_Project_LivePrototype
             this.tokenData = new TokenData(ref otherData);
         }
 
+        public TokenType TokenType
+        {
+            get { return tokenData.TokenType; }
+        }
+
         public PointF Position
         {
             get { return this.position; }
@@ -262,6 +267,11 @@ namespace CS446_Project_LivePrototype
                     mouseState = value;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return tokenData.Name;
         }
     }
 }

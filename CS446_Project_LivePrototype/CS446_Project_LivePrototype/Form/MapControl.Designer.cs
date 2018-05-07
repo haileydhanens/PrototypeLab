@@ -138,9 +138,11 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "MapControl";
             this.SizeChanged += new System.EventHandler(this.MapControl_SizeChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MapControl_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseUp);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MapControl_PreviewKeyDown);
             this.mapContextMenu.ResumeLayout(false);
             this.tokenContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);

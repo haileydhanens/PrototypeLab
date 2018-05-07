@@ -12,6 +12,6 @@ namespace CS446_Project_LivePrototype
     {
         public string MapImageFile = null;
         public TokenLibraryCollection TokenLibrary = new TokenLibraryCollection();
-        public List<MapToken> ActiveTokens = new List<MapToken>();
+        public MapTokenCollection ActiveTokens = new MapTokenCollection();
     }
 }

@@ -48,8 +48,10 @@ namespace CS446_Project_LivePrototype
             snapTokensToGridCheckbox.CheckState = mapControl.TokenSnapToGrid ? CheckState.Checked : CheckState.Unchecked;
 
             gameState.TokenLibrary.TokenAddedRemovedEvent += TokenLibrary_TokenAddedRemovedEvent;
+            gameState.ActiveTokens.MapTokenAddedRemovedEvent += ActiveTokens_MapTokenAddedRemovedEvent;
         }
 
+        // Collapses right pannel
         private void mainSplitContainer_DoubleClick(object sender, EventArgs e)
         {
             int closedPos = mainSplitContainer.Width - mainSplitContainer.SplitterWidth;
@@ -105,12 +107,12 @@ namespace CS446_Project_LivePrototype
 
         private void gridHorzOffset_Scroll(object sender, EventArgs e)
         {
-           // mapControl.GridHorizontalOffset = (float)gridHorzOffset.Value / 10.0f;
+            // mapControl.GridHorizontalOffset = (float)gridHorzOffset.Value / 10.0f;
         }
 
         private void gridVertOffsetSlider_Scroll(object sender, EventArgs e)
         {
-           // mapControl.GridVerticalOffset = (float)gridVertOffsetSlider.Value / 10.0f;
+            // mapControl.GridVerticalOffset = (float)gridVertOffsetSlider.Value / 10.0f;
         }
 
         private void rollDiceBtn_Click(object sender, EventArgs e)
@@ -225,12 +227,11 @@ namespace CS446_Project_LivePrototype
             TokenData selectedToken = gameState.TokenLibrary[(string)tokenLibList.SelectedItem];
 
             MapToken newToken = new MapToken(mapControl, ref selectedToken, mapControl.ViewPosition);
-            gameState.ActiveTokens.Add(newToken);
 
             // Make sure token is within the map bounds
             newToken.Position = newToken.Position;
 
-            mapControl.Refresh();
+            gameState.ActiveTokens.Add(newToken);     
         }
 
         // This event is automatically called whenever a token is added or removed from the token library
@@ -299,6 +300,148 @@ namespace CS446_Project_LivePrototype
             refreshTokenLibList();
         }
 
-        
+        private void tokenLibList_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    e.IsInputKey = true;
+                    break;
+            }
+        }
+
+        private void tokenLibList_KeyDown(object sender, KeyEventArgs e)
+        {
+            int curSelectedIndex = tokenLibList.SelectedIndex;
+
+            // No token selected
+            if (curSelectedIndex < 0)
+            {
+                return;
+            }
+
+            TokenData selectedToken = gameState.TokenLibrary[(string)tokenLibList.SelectedItem];
+
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    DialogResult ans = MessageBox.Show("Are you sure you want to delete the token \"" + selectedToken.Name + "\"?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (ans == DialogResult.Yes)
+                    {
+                        gameState.TokenLibrary.Remove(ref selectedToken);
+                        refreshTokenLibList();
+                    }
+                    break;
+            }
+        }
+
+        private void ActiveTokens_MapTokenAddedRemovedEvent(object sender, MapTokenAddedRemovedEventArgs a)
+        {
+            refreshActiveTokenList();
+        }
+
+        private void refreshActiveTokenList()
+        {
+            MapToken selectedToken = null;
+
+            if (tokenLibList.SelectedIndex >= 0)
+            {
+                selectedToken = (MapToken)activeTokensList.SelectedItem;
+            }
+
+            activeTokensList.Items.Clear();
+
+            var enumerator = gameState.ActiveTokens.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                MapToken token = enumerator.Current;
+
+                if (token.TokenType == TokenType.Player && activeTokPlayerFilterCheck.Checked)
+                {
+                    activeTokensList.Items.Add(token);
+                }
+                else if (token.TokenType == TokenType.Enemy && activeTokEnemyFilterCheck.Checked)
+                {
+                    activeTokensList.Items.Add(token);
+                }
+                else if (token.TokenType == TokenType.NPC && activeTokNonPlayerFilterCheck.Checked)
+                {
+                    activeTokensList.Items.Add(token);
+                }
+            }
+
+            activeTokensList.SelectedItem = selectedToken;
+        }
+
+        private void activeTokPlayerFilterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshActiveTokenList();
+        }
+
+        private void activeTokEnemyFilterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshActiveTokenList();
+        }
+
+        private void activeTokNonPlayerFilterCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshActiveTokenList();
+        }
+
+        private void actTokLocateBtn_Click(object sender, EventArgs e)
+        {
+            int curSelectedIndex = activeTokensList.SelectedIndex;
+
+            // No token selected
+            if (curSelectedIndex < 0)
+            {
+                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
+            mapControl.ViewPosition = selectedToken.Position;
+        }
+
+        private void actTokEditBtn_Click(object sender, EventArgs e)
+        {
+            int curSelectedIndex = activeTokensList.SelectedIndex;
+
+            // No token selected
+            if (curSelectedIndex < 0)
+            {
+                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
+            TokenData tokenData = selectedToken.GetTokenData();
+
+            EditTokenForm charForm = new EditTokenForm(gameState);
+            charForm.SetTokenData(ref tokenData);
+            DialogResult result = charForm.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                tokenData = charForm.GetTokenData();
+                selectedToken.SetTokenData(ref tokenData);
+            }
+        }
+
+        private void actTokRemoveBtn_Click(object sender, EventArgs e)
+        {
+            int curSelectedIndex = activeTokensList.SelectedIndex;
+
+            // No token selected
+            if (curSelectedIndex < 0)
+            {
+                MessageBox.Show("No token selected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
+            gameState.ActiveTokens.Remove(selectedToken);
+        }
     }
 }
