@@ -55,6 +55,12 @@
       <DependentUpon>EditTokenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\GameState.cs" />
+    <Compile Include="Form\HoverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\HoverForm.Designer.cs">
+      <DependentUpon>HoverForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,12 @@
     <Compile Include="Form\MapControl.Designer.cs">
       <DependentUpon>MapControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\TokenListItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\TokenListItemControl.Designer.cs">
+      <DependentUpon>TokenListItemControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\ViewStatsForm.cs">
@@ -78,11 +90,17 @@
     <EmbeddedResource Include="Form\EditTokenForm.resx">
       <DependentUpon>EditTokenForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\HoverForm.resx">
+      <DependentUpon>HoverForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\MapControl.resx">
       <DependentUpon>MapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\TokenListItemControl.resx">
+      <DependentUpon>TokenListItemControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
