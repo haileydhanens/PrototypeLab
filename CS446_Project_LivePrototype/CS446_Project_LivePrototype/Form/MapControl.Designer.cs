@@ -35,12 +35,12 @@
             this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tokenContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.centerViewOnTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toggleShowLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.editTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.removeTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toggleShowLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapContextMenu.SuspendLayout();
             this.tokenContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +88,7 @@
             this.removeTokenToolStripMenuItem});
             this.tokenContextMenu.Name = "tokenContextMenu";
             this.tokenContextMenu.ShowImageMargin = false;
-            this.tokenContextMenu.Size = new System.Drawing.Size(167, 148);
+            this.tokenContextMenu.Size = new System.Drawing.Size(167, 126);
             // 
             // centerViewOnTokenToolStripMenuItem
             // 
@@ -97,6 +97,13 @@
             this.centerViewOnTokenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.centerViewOnTokenToolStripMenuItem.Text = "Center View On Token";
             this.centerViewOnTokenToolStripMenuItem.Click += new System.EventHandler(this.centerViewOnTokenToolStripMenuItem_Click);
+            // 
+            // toggleShowLabelsToolStripMenuItem
+            // 
+            this.toggleShowLabelsToolStripMenuItem.Name = "toggleShowLabelsToolStripMenuItem";
+            this.toggleShowLabelsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.toggleShowLabelsToolStripMenuItem.Text = "Toggle Token Labels";
+            this.toggleShowLabelsToolStripMenuItem.Click += new System.EventHandler(this.toggleShowLabelsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -132,13 +139,6 @@
             this.removeTokenToolStripMenuItem.Text = "Remove Token";
             this.removeTokenToolStripMenuItem.Click += new System.EventHandler(this.removeTokenToolStripMenuItem_Click);
             // 
-            // toggleShowLabelsToolStripMenuItem
-            // 
-            this.toggleShowLabelsToolStripMenuItem.Name = "toggleShowLabelsToolStripMenuItem";
-            this.toggleShowLabelsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.toggleShowLabelsToolStripMenuItem.Text = "Toggle Token Labels";
-            this.toggleShowLabelsToolStripMenuItem.Click += new System.EventHandler(this.toggleShowLabelsToolStripMenuItem_Click);
-            // 
             // MapControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +148,7 @@
             this.Name = "MapControl";
             this.SizeChanged += new System.EventHandler(this.MapControl_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MapControl_KeyDown);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseUp);

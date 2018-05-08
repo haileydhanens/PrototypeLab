@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CS446_Project_LivePrototype
@@ -25,6 +20,7 @@ namespace CS446_Project_LivePrototype
         public static readonly int MAX_GRID_SCALE_FACTOR = 25;
         public static readonly int MIN_GRID_SCALE = calcGridScale(MIN_GRID_SCALE_FACTOR);
         public static readonly int MAX_GRID_SCALE = calcGridScale(MAX_GRID_SCALE_FACTOR);
+        public static readonly int SELECT_TIME_FRAME = 100;
         public static readonly float GRID_SHIFT_STEP = 0.1f;
         public static readonly float ZOOM_STEP = 1.25f;
         public static readonly float PAN_STEP = 0.1f;
@@ -37,6 +33,7 @@ namespace CS446_Project_LivePrototype
         private MapToken rightClickedToken = null;
         private MouseDragState mouseDragState;
         private Point mouseDownPos;
+        Stopwatch mouseDownTimer = new Stopwatch();
         private bool leftMouseDown = false;
         private bool redrawNeeded = false;
         private bool tokenSnapToGrid = false;
@@ -552,6 +549,8 @@ namespace CS446_Project_LivePrototype
         {
             MapToken tokenUnderMouse = getTokenUnderMouse(e.Location);
             mouseDownPos = e.Location;
+            mouseDownTimer.Reset();
+            mouseDownTimer.Start();
 
             if (e.Button == MouseButtons.Left)
             {
@@ -882,6 +881,21 @@ namespace CS446_Project_LivePrototype
                     PanDown();
                     break;
             }
-        }   
+        }
+
+        private void MapControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            mouseDownTimer.Stop();
+            if (mouseDownTimer.ElapsedMilliseconds <= SELECT_TIME_FRAME)
+            {
+                MapToken mapToken = getTokenUnderMouse(e.Location);
+                if (mapToken != null)
+                {
+                    mapToken.Selected = !mapToken.Selected;
+                }
+            }
+
+            refreshIfNeeded();
+        }
     }
 }

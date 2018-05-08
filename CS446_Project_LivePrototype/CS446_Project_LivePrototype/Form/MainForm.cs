@@ -210,6 +210,7 @@ namespace CS446_Project_LivePrototype
             if (result == DialogResult.OK)
             {
                 TokenData newData = charForm.GetTokenData();
+                newData.CurrentHP = newData.MaxHP;
                 gameState.TokenLibrary.Add(ref newData);
             }
         }
@@ -233,6 +234,7 @@ namespace CS446_Project_LivePrototype
             if (result == DialogResult.OK)
             {
                 tokenData = charForm.GetTokenData();
+                tokenData.CurrentHP = tokenData.MaxHP;
                 gameState.TokenLibrary[tokenData.Name] = tokenData;
             }
         }

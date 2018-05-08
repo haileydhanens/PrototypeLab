@@ -142,6 +142,7 @@ namespace CS446_Project_LivePrototype
         public static readonly Color COLOR_IDLE = Color.Red;
         public static readonly Color COLOR_HOVER = Color.Yellow;
         public static readonly Color COLOR_DRAG = Color.Green;
+        public static readonly Color COLOR_SELECTED = Color.Gray;
         public static readonly float STRING_VERTICAL_PADDING = 2.0f;
         public static readonly float STRING_HORIZONTAL_PADDING = 5.0f;
 
@@ -149,7 +150,10 @@ namespace CS446_Project_LivePrototype
         protected TokenData tokenData;
         protected TokenMouseState mouseState = TokenMouseState.Idle;
         protected PointF position;
+        protected bool selected = false;
         protected float scale = 1.0f;
+
+        protected ViewStatsForm viewStatsForm;
 
         public MapToken(MapControl mapCtrl, ref TokenData tokenData, PointF mapPosition)
         {
@@ -176,6 +180,15 @@ namespace CS446_Project_LivePrototype
         public void SetTokenData(ref TokenData otherData)
         {
             this.tokenData = new TokenData(ref otherData);
+        }
+
+        public int CurrentHP
+        {
+            get { return tokenData.CurrentHP; }
+            set
+            {
+                tokenData.CurrentHP = value;
+            }
         }
 
         public TokenType TokenType
@@ -213,6 +226,26 @@ namespace CS446_Project_LivePrototype
             }
         }
 
+        public bool Selected
+        {
+            get { return selected; }
+            set
+            {
+                if (selected != value)
+                {
+                    selected = value;
+                    mapCtrl.RedrawNeeded = true;
+
+                    if (selected)
+                    {
+                        viewStatsForm = new ViewStatsForm(this);
+                        viewStatsForm.Show(mapCtrl.ParentForm);
+                    }
+                    else { viewStatsForm.Close(); }
+                }
+            }
+        }
+
         // Draws the token using the given graphics
         public void DrawToken(Graphics graphics, ref RectangleF viewportRect)
         {
@@ -228,19 +261,29 @@ namespace CS446_Project_LivePrototype
 
             switch (mouseState)
             {
-                case TokenMouseState.Idle:
-                    drawColor = COLOR_IDLE;
-                    break;
                 case TokenMouseState.Hover:
                     drawColor = COLOR_HOVER;
                     break;
                 case TokenMouseState.Drag:
                     drawColor = COLOR_DRAG;
                     break;
+                case TokenMouseState.Idle:
+                    if (!selected) { drawColor = COLOR_IDLE; }
+                    else { drawColor = COLOR_SELECTED; }
+                    break;
             }
 
             SolidBrush baseBrush = new SolidBrush(drawColor);
-            Pen outlinePen = new Pen(Color.Black, 4.0f);
+            Pen outlinePen;
+
+            if (selected)
+            {
+                outlinePen = new Pen(Color.White, 4.0f);
+            }
+            else
+            {
+                outlinePen = new Pen(Color.Black, 4.0f);
+            }
             
             // Placeholder graphics.
             // TODO: Draw token image
@@ -295,6 +338,11 @@ namespace CS446_Project_LivePrototype
             unitRect.Y = position.Y - (unitRect.Height / 2); // Center Rect over Y pos
 
             return unitRect;
+        }
+
+        public Point GetPixelPos()
+        {
+            return mapCtrl.UnitPosToPixelPos(position.X, position.Y, mapCtrl.GetViewportUnitRect());
         }
 
         public TokenMouseState MouseState
