@@ -240,10 +240,12 @@ namespace CS446_Project_LivePrototype
             }
 
             SolidBrush baseBrush = new SolidBrush(drawColor);
+            Pen outlinePen = new Pen(Color.Black, 4.0f);
             
             // Placeholder graphics.
             // TODO: Draw token image
             graphics.FillEllipse(baseBrush, pixelRect);
+            graphics.DrawEllipse(outlinePen, pixelRect);
         }
 
         // Draws the token label using the given graphics
@@ -266,19 +268,19 @@ namespace CS446_Project_LivePrototype
 
                 stringBckRect.Width = strSize.Width + (STRING_HORIZONTAL_PADDING * 2);
                 stringBckRect.Height = strSize.Height + (STRING_VERTICAL_PADDING * 2);
-                stringBckRect.X = pixelPos.X - (stringBckRect.Width / 2);
-                stringBckRect.Y = pixelRect.Bottom + STRING_VERTICAL_PADDING;
+                stringBckRect.X = (float)pixelPos.X - (stringBckRect.Width / 2);
+                stringBckRect.Y = (float)pixelRect.Bottom + STRING_VERTICAL_PADDING;
 
                 stringRect.Width = strSize.Width;
                 stringRect.Height = strSize.Height;
-                stringRect.X = pixelPos.X - (strSize.Width / 2);
-                stringRect.Y = pixelRect.Bottom + (STRING_VERTICAL_PADDING * 2);
+                stringRect.X = (float)pixelPos.X - (stringRect.Width / 2);
+                stringRect.Y = (float)pixelRect.Bottom + (STRING_VERTICAL_PADDING * 2);
 
                 SolidBrush textBckBrush = new SolidBrush(Color.FromArgb(200, Color.Black));
                 SolidBrush textBrush = new SolidBrush(Color.White);
 
                 graphics.FillRectangle(textBckBrush, stringBckRect);
-                graphics.DrawString(tokenData.Name, mapCtrl.MapLabelFont, textBrush, stringRect);
+                graphics.DrawString(tokenData.Name, mapCtrl.MapLabelFont, textBrush, stringRect.X, stringRect.Y, StringFormat.GenericDefault);
             }
         }
 
