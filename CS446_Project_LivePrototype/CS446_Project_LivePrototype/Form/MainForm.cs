@@ -144,13 +144,15 @@ namespace CS446_Project_LivePrototype
 
             Random rnd = new Random();
 
-            for (int i = numDice; i > 0; i--)
-                output += "  " + rnd.Next(1, numSides + 1);
+			output += rnd.Next(1, numSides + 1);
+
+            for (int i = numDice - 1; i > 0; i--)
+                output += ",  " + rnd.Next(1, numSides + 1);
 
             output.Trim();
 
             Console.WriteLine(output);
-            diceOutputTextbox.Text = output;
+            diceOutputLabel.Text = output;
         }
 
         private void centerViewBtn_Click(object sender, EventArgs e)
@@ -464,5 +466,10 @@ namespace CS446_Project_LivePrototype
             MapToken selectedToken = (MapToken)activeTokensList.Items[curSelectedIndex];
             gameState.ActiveTokens.Remove(selectedToken);
         }
-    }
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
