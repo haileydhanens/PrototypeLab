@@ -81,3 +81,6 @@ C:\Users\Matthew\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS446
 C:\Users\Matthew\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.exe
 C:\Users\Matthew\Documents\GitHub\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.pdb
 E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.ViewStatsForm.resources
+E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.csprojResolveAssemblyReference.cache
+E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.HoverForm.resources
+E:\git-repo\PrototypeLab\CS446_Project_LivePrototype\CS446_Project_LivePrototype\obj\Debug\CS446_Project_LivePrototype.TokenListItemControl.resources

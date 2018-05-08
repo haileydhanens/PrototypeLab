@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Text;
 
 namespace CS446_Project_LivePrototype
 {
@@ -11,6 +12,9 @@ namespace CS446_Project_LivePrototype
     public class GameState
     {
         public string MapImageFile = null;
+        public PrivateFontCollection FontCollection;
+        public FontFamily MapFontFamily;
+        public Font MapLabelsFont;
         public TokenLibraryCollection TokenLibrary = new TokenLibraryCollection();
         public MapTokenCollection ActiveTokens = new MapTokenCollection();
     }

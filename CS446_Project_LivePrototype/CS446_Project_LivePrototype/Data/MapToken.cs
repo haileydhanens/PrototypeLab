@@ -142,6 +142,8 @@ namespace CS446_Project_LivePrototype
         public static readonly Color COLOR_IDLE = Color.Red;
         public static readonly Color COLOR_HOVER = Color.Yellow;
         public static readonly Color COLOR_DRAG = Color.Green;
+        public static readonly float STRING_VERTICAL_PADDING = 2.0f;
+        public static readonly float STRING_HORIZONTAL_PADDING = 5.0f;
 
         protected MapControl mapCtrl;
         protected TokenData tokenData;
@@ -212,7 +214,7 @@ namespace CS446_Project_LivePrototype
         }
 
         // Draws the token using the given graphics
-        public void Draw(Graphics graphics, ref RectangleF viewportRect)
+        public void DrawToken(Graphics graphics, ref RectangleF viewportRect)
         {
             RectangleF tokenRect = GetUnitRect();
 
@@ -220,6 +222,7 @@ namespace CS446_Project_LivePrototype
             if (!viewportRect.IntersectsWith(tokenRect)) { return; }
 
             Rectangle pixelRect = mapCtrl.UnitRectToPixelRect(tokenRect, viewportRect);
+            Point pixelPos = mapCtrl.UnitPosToPixelPos(position.X, position.Y, viewportRect);
 
             Color drawColor = Color.White;
 
@@ -236,11 +239,47 @@ namespace CS446_Project_LivePrototype
                     break;
             }
 
-            SolidBrush brush = new SolidBrush(drawColor);
-
+            SolidBrush baseBrush = new SolidBrush(drawColor);
+            
             // Placeholder graphics.
             // TODO: Draw token image
-            graphics.FillEllipse(brush, pixelRect);
+            graphics.FillEllipse(baseBrush, pixelRect);
+        }
+
+        // Draws the token label using the given graphics
+        public void DrawTokenLabel(Graphics graphics, ref RectangleF viewportRect)
+        {
+            RectangleF tokenRect = GetUnitRect();
+
+            // Token is offscreen, so no need to draw it
+            if (!viewportRect.IntersectsWith(tokenRect)) { return; }
+
+            if (mapCtrl.MapLabelFont != null)
+            {
+                Rectangle pixelRect = mapCtrl.UnitRectToPixelRect(tokenRect, viewportRect);
+                Point pixelPos = mapCtrl.UnitPosToPixelPos(position.X, position.Y, viewportRect);
+
+                RectangleF stringRect = new RectangleF();
+                RectangleF stringBckRect = new RectangleF();
+
+                SizeF strSize = graphics.MeasureString(tokenData.Name, mapCtrl.MapLabelFont);
+
+                stringBckRect.Width = strSize.Width + (STRING_HORIZONTAL_PADDING * 2);
+                stringBckRect.Height = strSize.Height + (STRING_VERTICAL_PADDING * 2);
+                stringBckRect.X = pixelPos.X - (stringBckRect.Width / 2);
+                stringBckRect.Y = pixelRect.Bottom + STRING_VERTICAL_PADDING;
+
+                stringRect.Width = strSize.Width;
+                stringRect.Height = strSize.Height;
+                stringRect.X = pixelPos.X - (strSize.Width / 2);
+                stringRect.Y = pixelRect.Bottom + (STRING_VERTICAL_PADDING * 2);
+
+                SolidBrush textBckBrush = new SolidBrush(Color.FromArgb(200, Color.Black));
+                SolidBrush textBrush = new SolidBrush(Color.White);
+
+                graphics.FillRectangle(textBckBrush, stringBckRect);
+                graphics.DrawString(tokenData.Name, mapCtrl.MapLabelFont, textBrush, stringRect);
+            }
         }
 
         public RectangleF GetUnitRect()

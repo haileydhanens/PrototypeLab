@@ -40,6 +40,7 @@ namespace CS446_Project_LivePrototype
         private bool leftMouseDown = false;
         private bool redrawNeeded = false;
         private bool tokenSnapToGrid = false;
+        private bool showTokenLabels = true;
         private Image mapImage = null;
         private Image mapImageSized = null;
         private int gridAlpha = 255;
@@ -240,6 +241,16 @@ namespace CS446_Project_LivePrototype
             set { tokenSnapToGrid = value; }
         }
 
+        public bool ShowTokenLabels
+        {
+            get { return showTokenLabels; }
+            set
+            {
+                showTokenLabels = value;
+                Refresh();
+            }
+        }
+
         public bool RedrawNeeded
         {
             get { return redrawNeeded; }
@@ -303,6 +314,11 @@ namespace CS446_Project_LivePrototype
             Refresh();
         }
 
+        public Font MapLabelFont
+        {
+            get { return gameState.MapLabelsFont; }
+        }
+
         // Calculates a grid scale based off of the given scale factor
         private static int calcGridScale(int factor)
         {
@@ -355,6 +371,7 @@ namespace CS446_Project_LivePrototype
 
                 drawGridLines(e, ref viewportRect);
                 drawTokens(e, ref viewportRect);
+                if (showTokenLabels) { drawTokenLabels(e, ref viewportRect);  }
             }
         }
 
@@ -390,7 +407,18 @@ namespace CS446_Project_LivePrototype
 
             foreach (MapToken token in gameState.ActiveTokens)
             {
-                token.Draw(e.Graphics, ref viewPortRect);
+                token.DrawToken(e.Graphics, ref viewPortRect);
+            }
+        }
+
+        protected virtual void drawTokenLabels(PaintEventArgs e, ref RectangleF viewPortRect)
+        {
+            // Return if no tokens to draw
+            if (gameState.ActiveTokens.Count == 0) { return; }
+
+            foreach (MapToken token in gameState.ActiveTokens)
+            {
+                token.DrawTokenLabel(e.Graphics, ref viewPortRect);
             }
         }
 
@@ -783,6 +811,11 @@ namespace CS446_Project_LivePrototype
             Refresh();
         }
 
+        private void toggleShowLabelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowTokenLabels = !ShowTokenLabels;
+        }
+
         private void editTokenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (rightClickedToken == null) { return; }
@@ -849,6 +882,6 @@ namespace CS446_Project_LivePrototype
                     PanDown();
                     break;
             }
-        }
+        }   
     }
 }

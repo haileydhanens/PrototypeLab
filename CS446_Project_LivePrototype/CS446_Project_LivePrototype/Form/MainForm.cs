@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,26 @@ namespace CS446_Project_LivePrototype
 
             gameState.TokenLibrary.TokenAddedRemovedEvent += TokenLibrary_TokenAddedRemovedEvent;
             gameState.ActiveTokens.MapTokenAddedRemovedEvent += ActiveTokens_MapTokenAddedRemovedEvent;
+
+            loadFonts();
+        }
+
+        private void loadFonts()
+        {
+            try
+            {
+                gameState.FontCollection = new PrivateFontCollection();
+                gameState.FontCollection.AddFontFile("zrnic_rg.ttf");
+                gameState.MapFontFamily = new FontFamily("Zrnic Rg", gameState.FontCollection);
+                gameState.MapLabelsFont = new Font(gameState.MapFontFamily, 12, FontStyle.Regular);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error loading fonts: " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                gameState.FontCollection = null;
+                gameState.MapFontFamily = null;
+                gameState.MapLabelsFont = null;
+            }
         }
 
         // Collapses right pannel

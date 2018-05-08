@@ -40,6 +40,7 @@
             this.duplicateTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.removeTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toggleShowLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapContextMenu.SuspendLayout();
             this.tokenContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +80,7 @@
             // 
             this.tokenContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.centerViewOnTokenToolStripMenuItem,
+            this.toggleShowLabelsToolStripMenuItem,
             this.toolStripSeparator1,
             this.editTokenToolStripMenuItem,
             this.duplicateTokenToolStripMenuItem,
@@ -86,7 +88,7 @@
             this.removeTokenToolStripMenuItem});
             this.tokenContextMenu.Name = "tokenContextMenu";
             this.tokenContextMenu.ShowImageMargin = false;
-            this.tokenContextMenu.Size = new System.Drawing.Size(167, 104);
+            this.tokenContextMenu.Size = new System.Drawing.Size(167, 148);
             // 
             // centerViewOnTokenToolStripMenuItem
             // 
@@ -130,6 +132,13 @@
             this.removeTokenToolStripMenuItem.Text = "Remove Token";
             this.removeTokenToolStripMenuItem.Click += new System.EventHandler(this.removeTokenToolStripMenuItem_Click);
             // 
+            // toggleShowLabelsToolStripMenuItem
+            // 
+            this.toggleShowLabelsToolStripMenuItem.Name = "toggleShowLabelsToolStripMenuItem";
+            this.toggleShowLabelsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.toggleShowLabelsToolStripMenuItem.Text = "Toggle Token Labels";
+            this.toggleShowLabelsToolStripMenuItem.Click += new System.EventHandler(this.toggleShowLabelsToolStripMenuItem_Click);
+            // 
             // MapControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,5 +171,6 @@
         private System.Windows.Forms.ToolStripMenuItem centerViewOnTokenToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem toggleShowLabelsToolStripMenuItem;
     }
 }
