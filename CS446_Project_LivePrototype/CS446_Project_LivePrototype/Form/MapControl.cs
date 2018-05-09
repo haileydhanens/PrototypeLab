@@ -20,7 +20,7 @@ namespace CS446_Project_LivePrototype
         public static readonly int MAX_GRID_SCALE_FACTOR = 25;
         public static readonly int MIN_GRID_SCALE = calcGridScale(MIN_GRID_SCALE_FACTOR);
         public static readonly int MAX_GRID_SCALE = calcGridScale(MAX_GRID_SCALE_FACTOR);
-        public static readonly int SELECT_TIME_FRAME = 100;
+        public static readonly int SELECT_TIME_FRAME = 250;
         public static readonly float GRID_SHIFT_STEP = 0.1f;
         public static readonly float ZOOM_STEP = 1.25f;
         public static readonly float PAN_STEP = 0.1f;
@@ -235,7 +235,14 @@ namespace CS446_Project_LivePrototype
         public bool TokenSnapToGrid
         {
             get { return tokenSnapToGrid; }
-            set { tokenSnapToGrid = value; }
+            set
+			{
+				tokenSnapToGrid = value;
+				foreach (MapToken token in gameState.ActiveTokens)
+					token.Position = token.Position;
+
+				Refresh();
+			}
         }
 
         public bool ShowTokenLabels
