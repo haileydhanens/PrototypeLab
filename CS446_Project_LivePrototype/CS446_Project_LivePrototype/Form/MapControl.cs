@@ -24,7 +24,7 @@ namespace CS446_Project_LivePrototype
         public static readonly float GRID_SHIFT_STEP = 0.1f;
         public static readonly float ZOOM_STEP = 1.25f;
         public static readonly float PAN_STEP = 0.1f;
-        public static readonly float MAX_ZOOM = (float)Math.Pow(ZOOM_STEP, 12);
+        public static readonly float MAX_ZOOM = (float)Math.Pow(ZOOM_STEP, 8);
         public static readonly float MIN_ZOOM = (float)Math.Pow(ZOOM_STEP, -4);
 
         private readonly object drawMutex = new object();

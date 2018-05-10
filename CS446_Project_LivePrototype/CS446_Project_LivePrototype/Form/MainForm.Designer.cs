@@ -176,7 +176,7 @@
             this.mainSplitContainer.Panel2.Controls.Add(this.rightPanelSplitContainer);
             this.mainSplitContainer.Panel2MinSize = 0;
             this.mainSplitContainer.Size = new System.Drawing.Size(784, 537);
-            this.mainSplitContainer.SplitterDistance = 541;
+            this.mainSplitContainer.SplitterDistance = 539;
             this.mainSplitContainer.SplitterWidth = 6;
             this.mainSplitContainer.TabIndex = 1;
             this.mainSplitContainer.TabStop = false;
@@ -205,7 +205,7 @@
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.numericUpDown2);
             this.rightPanelSplitContainer.Panel2.Controls.Add(this.numericUpDown1);
             this.rightPanelSplitContainer.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rightPanelSplitContainer.Size = new System.Drawing.Size(235, 535);
+            this.rightPanelSplitContainer.Size = new System.Drawing.Size(237, 535);
             this.rightPanelSplitContainer.SplitterDistance = 439;
             this.rightPanelSplitContainer.TabIndex = 0;
             // 
@@ -219,7 +219,7 @@
             this.rightPanelTabControl.Location = new System.Drawing.Point(0, 0);
             this.rightPanelTabControl.Name = "rightPanelTabControl";
             this.rightPanelTabControl.SelectedIndex = 0;
-            this.rightPanelTabControl.Size = new System.Drawing.Size(235, 439);
+            this.rightPanelTabControl.Size = new System.Drawing.Size(237, 439);
             this.rightPanelTabControl.TabIndex = 0;
             // 
             // activeTokensTabPage
@@ -232,8 +232,8 @@
             this.activeTokensTabPage.Controls.Add(this.snapTokensToGridCheckbox);
             this.activeTokensTabPage.Location = new System.Drawing.Point(4, 22);
             this.activeTokensTabPage.Name = "activeTokensTabPage";
-            this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.activeTokensTabPage.Size = new System.Drawing.Size(227, 413);
+            this.activeTokensTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.activeTokensTabPage.Size = new System.Drawing.Size(229, 413);
             this.activeTokensTabPage.TabIndex = 0;
             this.activeTokensTabPage.Text = "Active Tokens";
             this.activeTokensTabPage.UseVisualStyleBackColor = true;
@@ -347,8 +347,8 @@
             this.tokenLibraryTabPage.Controls.Add(this.newLibTokenBtn);
             this.tokenLibraryTabPage.Location = new System.Drawing.Point(4, 22);
             this.tokenLibraryTabPage.Name = "tokenLibraryTabPage";
-            this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tokenLibraryTabPage.Size = new System.Drawing.Size(165, 432);
+            this.tokenLibraryTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.tokenLibraryTabPage.Size = new System.Drawing.Size(229, 413);
             this.tokenLibraryTabPage.TabIndex = 1;
             this.tokenLibraryTabPage.Text = "Token Library";
             this.tokenLibraryTabPage.UseVisualStyleBackColor = true;
@@ -451,8 +451,8 @@
             this.mapTabPage.Controls.Add(this.loadMapBackgroundBtn);
             this.mapTabPage.Location = new System.Drawing.Point(4, 22);
             this.mapTabPage.Name = "mapTabPage";
-            this.mapTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.mapTabPage.Size = new System.Drawing.Size(165, 432);
+            this.mapTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.mapTabPage.Size = new System.Drawing.Size(229, 413);
             this.mapTabPage.TabIndex = 2;
             this.mapTabPage.Text = "Map";
             this.mapTabPage.UseVisualStyleBackColor = true;
@@ -474,7 +474,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(9, 125);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 283);
+            this.groupBox1.Size = new System.Drawing.Size(213, 283);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grid Settings";
@@ -541,7 +541,7 @@
             this.gridScaleSlider.Location = new System.Drawing.Point(9, 242);
             this.gridScaleSlider.Minimum = 2;
             this.gridScaleSlider.Name = "gridScaleSlider";
-            this.gridScaleSlider.Size = new System.Drawing.Size(190, 32);
+            this.gridScaleSlider.Size = new System.Drawing.Size(198, 32);
             this.gridScaleSlider.TabIndex = 7;
             this.gridScaleSlider.Value = 2;
             this.gridScaleSlider.Scroll += new System.EventHandler(this.gridScaleSlider_Scroll);
@@ -563,7 +563,7 @@
             this.gridAlphaSlider.Location = new System.Drawing.Point(9, 188);
             this.gridAlphaSlider.Maximum = 255;
             this.gridAlphaSlider.Name = "gridAlphaSlider";
-            this.gridAlphaSlider.Size = new System.Drawing.Size(190, 31);
+            this.gridAlphaSlider.Size = new System.Drawing.Size(198, 31);
             this.gridAlphaSlider.TabIndex = 9;
             this.gridAlphaSlider.Scroll += new System.EventHandler(this.gridAlphaSlider_Scroll);
             // 
@@ -585,7 +585,7 @@
             this.gridThicknessSlider.Maximum = 6;
             this.gridThicknessSlider.Minimum = 1;
             this.gridThicknessSlider.Name = "gridThicknessSlider";
-            this.gridThicknessSlider.Size = new System.Drawing.Size(190, 32);
+            this.gridThicknessSlider.Size = new System.Drawing.Size(198, 32);
             this.gridThicknessSlider.TabIndex = 11;
             this.gridThicknessSlider.Value = 1;
             this.gridThicknessSlider.Scroll += new System.EventHandler(this.gridThicknessSlider_Scroll);
@@ -610,7 +610,7 @@
             this.viewGroupBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.viewGroupBox.Location = new System.Drawing.Point(9, 39);
             this.viewGroupBox.Name = "viewGroupBox";
-            this.viewGroupBox.Size = new System.Drawing.Size(205, 80);
+            this.viewGroupBox.Size = new System.Drawing.Size(213, 80);
             this.viewGroupBox.TabIndex = 17;
             this.viewGroupBox.TabStop = false;
             this.viewGroupBox.Text = "View Settings";
@@ -679,7 +679,7 @@
             // rollDiceBtn
             // 
             this.rollDiceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rollDiceBtn.Location = new System.Drawing.Point(178, 40);
+            this.rollDiceBtn.Location = new System.Drawing.Point(180, 40);
             this.rollDiceBtn.Name = "rollDiceBtn";
             this.rollDiceBtn.Size = new System.Drawing.Size(54, 48);
             this.rollDiceBtn.TabIndex = 5;
@@ -716,7 +716,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(75, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(77, 20);
             this.numericUpDown2.TabIndex = 1;
             this.numericUpDown2.Value = new decimal(new int[] {
             20,
@@ -740,7 +740,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(75, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(77, 20);
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
@@ -763,7 +763,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(800, 599);
             this.Name = "MainForm";
-            this.Text = "D&D Prototype";
+            this.Text = "Dungeons And Doodles";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
