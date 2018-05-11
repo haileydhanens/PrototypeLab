@@ -150,6 +150,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MapControl_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseDown);
+            this.MouseHover += new System.EventHandler(this.MapControl_MouseHover);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MapControl_MouseUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MapControl_PreviewKeyDown);

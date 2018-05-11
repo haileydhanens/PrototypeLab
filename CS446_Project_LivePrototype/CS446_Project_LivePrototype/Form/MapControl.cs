@@ -29,6 +29,7 @@ namespace CS446_Project_LivePrototype
 
         private readonly object drawMutex = new object();
         private GameState gameState;
+        private TokenHoverToolTip tokenHoverToolTip;
         private MapToken draggedToken = null;
         private MapToken rightClickedToken = null;
         private MouseDragState mouseDragState;
@@ -55,6 +56,11 @@ namespace CS446_Project_LivePrototype
 
             this.gameState = gameState;
             this.ResizeRedraw = true;
+            this.tokenHoverToolTip = new TokenHoverToolTip();
+            this.tokenHoverToolTip.SetToolTip(this, "Tooltip");
+            this.tokenHoverToolTip.Active = false;
+            this.tokenHoverToolTip.ShowAlways = true;
+            this.tokenHoverToolTip.ReshowDelay = 0;
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
 
@@ -672,6 +678,8 @@ namespace CS446_Project_LivePrototype
             // Get unit rectangle for current view
             RectangleF viewPortRect = GetViewportUnitRect();
 
+            MapToken tokenUnderMouse = null;
+
             // Loop through each active token
             foreach (MapToken token in gameState.ActiveTokens)
             {
@@ -689,6 +697,7 @@ namespace CS446_Project_LivePrototype
                     if (pixelRect.Contains(mousePos))
                     {
                         token.MouseState = TokenMouseState.Hover;
+                        tokenUnderMouse = token;
                     }
                     else
                     {
@@ -696,6 +705,19 @@ namespace CS446_Project_LivePrototype
                     }
                 }
             }
+
+            if (tokenUnderMouse != null && !tokenHoverToolTip.Active)
+            {
+                TokenData data = tokenUnderMouse.GetTokenData();
+                tokenHoverToolTip.SetTokenData(ref data);
+                tokenHoverToolTip.Active = true;
+            }
+            else if (tokenUnderMouse == null && tokenHoverToolTip.Active)
+            {
+                tokenHoverToolTip.Active = false;
+                tokenHoverToolTip.Hide(this);
+            }
+            
 
         }
 
@@ -903,6 +925,10 @@ namespace CS446_Project_LivePrototype
             }
 
             refreshIfNeeded();
+        }
+
+        private void MapControl_MouseHover(object sender, EventArgs e)
+        {
         }
     }
 }
