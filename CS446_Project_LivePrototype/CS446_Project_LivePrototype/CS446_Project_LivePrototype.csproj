@@ -73,6 +73,9 @@
     <Compile Include="Form\MapControl.Designer.cs">
       <DependentUpon>MapControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\TokenHoverToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form\TokenListItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

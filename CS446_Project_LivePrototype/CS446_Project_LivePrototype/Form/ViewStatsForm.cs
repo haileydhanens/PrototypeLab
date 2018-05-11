@@ -13,12 +13,14 @@ namespace CS446_Project_LivePrototype
     public partial class ViewStatsForm : Form
     {
         private MapToken mapToken;
+        private Point formPos;
 
-        public ViewStatsForm(MapToken mapToken)
+        public ViewStatsForm(MapToken mapToken, Point formPos)
         {
             InitializeComponent();
 
             this.mapToken = mapToken;
+            this.formPos = formPos;
         }
 
         private void ViewStatsForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -44,15 +46,27 @@ namespace CS446_Project_LivePrototype
             this.intLbl.Text = tokData.Intelligence.ToString();
             this.wisLbl.Text = tokData.Wisdom.ToString();
             this.chrLbl.Text = tokData.Charisma.ToString();
+            this.notesBox.Text = tokData.Notes;
 
-            Point tokenPixelPos = mapToken.GetPixelPos();
+            formPos.X -= Size.Width;
+            formPos.Y -= Size.Height;
 
-            this.Location = tokenPixelPos;
+            Rectangle screenRect = Screen.FromControl(this).Bounds;
+
+            formPos.X = Math.Max(Math.Min(screenRect.Width - Size.Width, formPos.X), 0);
+            formPos.Y = Math.Max(Math.Min(screenRect.Height - Size.Height, formPos.Y), 0);
+
+            this.Location = formPos;
         }
 
         private void curHPBox_ValueChanged(object sender, EventArgs e)
         {
             mapToken.CurrentHP = (int)curHPBox.Value;
+        }
+
+        private void notesBox_TextChanged(object sender, EventArgs e)
+        {
+            mapToken.Notes = notesBox.Text;
         }
     }
 }

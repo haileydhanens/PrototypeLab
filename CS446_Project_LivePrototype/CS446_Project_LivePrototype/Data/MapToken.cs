@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CS446_Project_LivePrototype
 {
@@ -191,6 +192,12 @@ namespace CS446_Project_LivePrototype
             }
         }
 
+        public string Notes
+        {
+            get { return tokenData.Notes; }
+            set { tokenData.Notes = value; }
+        }
+
         public TokenType TokenType
         {
             get { return tokenData.TokenType; }
@@ -238,7 +245,7 @@ namespace CS446_Project_LivePrototype
 
                     if (selected)
                     {
-                        viewStatsForm = new ViewStatsForm(this);
+                        viewStatsForm = new ViewStatsForm(this, Cursor.Position);
                         viewStatsForm.Show(mapCtrl.ParentForm);
                     }
                     else { viewStatsForm.Close(); }
