@@ -138,8 +138,8 @@ namespace CS446_Project_LivePrototype
 
         private void rollDiceBtn_Click(object sender, EventArgs e)
         {
-            int numDice = (int)numericUpDown1.Value;
-            int numSides = (int)numericUpDown2.Value;
+            int numDice = (int)NumberOfDiceUpDown.Value;
+            int numSides = (int)NumberOfSidesUpDown.Value;
             String output = "";
 
             Random rnd = new Random();
@@ -152,7 +152,7 @@ namespace CS446_Project_LivePrototype
             output.Trim();
 
             Console.WriteLine(output);
-            diceOutputLabel.Text = output;
+            diceRollOutputLabel.Text = output;
         }
 
         private void centerViewBtn_Click(object sender, EventArgs e)
@@ -470,6 +470,11 @@ namespace CS446_Project_LivePrototype
         }
 
 		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void rightPanelSplitContainer_Panel2_Paint(object sender, PaintEventArgs e)
 		{
 
 		}
