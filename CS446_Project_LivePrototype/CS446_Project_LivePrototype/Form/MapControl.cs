@@ -180,7 +180,10 @@ namespace CS446_Project_LivePrototype
                 // Make sure value is within range [-1.0, 1.0]
                 gridHorzOffset = value - (float)Math.Truncate(value);
 
-                Refresh();
+				foreach (MapToken token in gameState.ActiveTokens)
+					token.Position = token.Position;
+
+				Refresh();
             }
         }
 
@@ -193,8 +196,13 @@ namespace CS446_Project_LivePrototype
                 // Make sure value is within range [-1.0, 1.0]
                 gridVertOffset = value - (float)Math.Truncate(value);
 
-                Refresh();
+				foreach (MapToken token in gameState.ActiveTokens)
+					token.Position = token.Position;
+
+				Refresh();
             }
+
+			
         }
 
         // Property for Grid Scale
